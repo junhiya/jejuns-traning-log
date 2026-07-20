@@ -110,6 +110,15 @@
     line-height:1.8;
     color:var(--muted);
   }
+  .memo-link{
+    display:inline-block;
+    margin-top:14px;
+    font-size:12px;
+    color:#B4BEC7;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .memo-link:hover{color:var(--navy);}
   @media (prefers-reduced-motion: reduce){
     .btn{transition:none;}
     .btn:hover{transform:none;}
@@ -145,7 +154,9 @@
 
     <p class="footer">
       문의: 책임지도전문의 김준회<br>
-      이 페이지를 공용 PC 즐겨찾기에 등록해 두세요.
+      이 페이지를 공용 PC 즐겨찾기에 등록해 두세요.<br>
+      <a class="memo-link" target="_blank"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSfZwWqIwxlQkfAMwGOu6H1poh7XM3rh89UBh2gR7Wg1XrYHDQ/viewform">관리 메모</a>
     </p>
   </div>
 </body>
