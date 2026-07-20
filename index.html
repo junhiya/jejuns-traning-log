@@ -17,13 +17,14 @@
     --muted:#7B8794;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:auto;}
   body{
     font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
     background:var(--bg);
     color:var(--ink);
     min-height:100vh;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     padding:24px 16px;
   }
@@ -39,28 +40,29 @@
   .header{
     background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
     text-align:center;
-    padding:64px 36px 54px;
+    padding:44px 36px 36px;
   }
   .header .eyebrow{
     color:#9FB8D2;
-    font-size:15px;
+    font-size:14px;
     letter-spacing:4px;
-    margin-bottom:16px;
+    margin-bottom:14px;
   }
   .header h1{
     color:#fff;
-    font-size:40px;
+    font-size:32px;
     font-weight:700;
     line-height:1.4;
+    word-break:keep-all;
   }
   .header .rule{
     width:60px;height:4px;background:#3E7CB8;
-    margin:24px auto 0;border-radius:2px;
+    margin:20px auto 0;border-radius:2px;
   }
   /* 안내 */
   .lead{
     text-align:center;
-    padding:32px 28px 6px;
+    padding:24px 28px 4px;
     font-size:16px;
     line-height:1.7;
     color:#4A5A6A;
@@ -68,31 +70,31 @@
   .lead b{color:var(--navy);}
   /* 버튼 */
   .buttons{
-    padding:44px 48px 16px;
+    padding:28px 48px 12px;
     display:flex;
     flex-direction:column;
-    gap:24px;
+    gap:16px;
   }
   .btn{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    min-height:142px;
+    min-height:88px;
     text-decoration:none;
     text-align:center;
     color:#fff;
-    padding:38px 28px;
+    padding:22px 28px;
     border-radius:16px;
-    font-size:30px;
+    font-size:22px;
     font-weight:700;
     transition:transform .12s ease, box-shadow .12s ease;
   }
   .btn small{
     display:block;
-    font-size:16px;
+    font-size:14px;
     font-weight:400;
-    margin-top:10px;
+    margin-top:8px;
     opacity:.85;
   }
   .btn.resident{
@@ -114,7 +116,7 @@
   /* 하단 */
   .footer{
     text-align:center;
-    padding:30px 28px 44px;
+    padding:20px 28px 32px;
     font-size:15px;
     line-height:1.8;
     color:var(--muted);
@@ -133,10 +135,11 @@
     .btn:hover{transform:none;}
   }
   @media (max-width:600px){
-    .header{padding:44px 28px 38px;}
-    .header h1{font-size:26px;}
-    .buttons{padding:32px 24px 10px;}
-    .btn{font-size:20px;padding:24px 18px;}
+    .header{padding:32px 24px 28px;}
+    .header .eyebrow{font-size:11px;letter-spacing:2px;}
+    .header h1{font-size:23px;}
+    .buttons{padding:20px 20px 8px;gap:14px;}
+    .btn{font-size:18px;padding:18px 16px;min-height:72px;}
   }
 </style>
 </head>
@@ -144,7 +147,7 @@
   <div class="card">
     <div class="header">
       <div class="eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-      <h1>제주대학교 신경외과 수련 로그북</h1>
+      <h1>제주대학교 신경외과<br>수련 로그북</h1>
       <div class="rule"></div>
     </div>
 
