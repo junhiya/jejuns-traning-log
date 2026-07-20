@@ -105,7 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('lockform');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const pw = document.getElementById('pw').value;
+    const pw = document.getElementById('pw').value.normalize('NFC');
     const h = await sha256(pw);
     if (h === REQUIRED_HASH) {
       sessionStorage.setItem('mentoring_report_unlocked', '1');
