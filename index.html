@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>제주대학교 신경외과 수련 로그북</title>
+<title>제주대학교 신경외과 전공의 로그북</title>
 <style>
   :root{
     --navy:#14385C;
@@ -74,7 +74,11 @@
     gap:24px;
   }
   .btn{
-    display:block;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:142px;
     text-decoration:none;
     text-align:center;
     color:#fff;
@@ -101,6 +105,11 @@
     box-shadow:0 4px 12px rgba(14,125,107,.30);
   }
   .btn.faculty:hover{background:var(--teal-dark);transform:translateY(-2px);}
+  .btn.mentoring{
+    background:var(--navy);
+    box-shadow:0 4px 12px rgba(20,56,92,.30);
+  }
+  .btn.mentoring:hover{background:var(--navy-deep);transform:translateY(-2px);}
   .btn:focus-visible{outline:3px solid #FFB84D;outline-offset:3px;}
   /* 하단 */
   .footer{
@@ -135,7 +144,7 @@
   <div class="card">
     <div class="header">
       <div class="eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-      <h1>제주대학교 신경외과 수련 로그북</h1>
+      <h1>제주대학교 신경외과<br>전공의 로그북</h1>
       <div class="rule"></div>
     </div>
 
@@ -149,6 +158,10 @@
          href="https://docs.google.com/forms/d/e/1FAIpQLSctycOUjmokDceZ-wQUy29RiXTUXlt012bt9FAp9A2BkMqMaA/viewform">
         지도전문의 피드백 입력
         <small>체크리스트 기반 · 1분 이내</small>
+      </a>
+      <a class="btn mentoring" target="_blank"
+         href="https://docs.google.com/forms/d/e/1FAIpQLScAgW0JL7JGWAdWe8yLEpL8kmvvbTQjBIjZuNIB2MIRSLxKaw/viewform">
+        면담·지도기록 입력
       </a>
     </div>
 
