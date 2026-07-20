@@ -87,7 +87,7 @@ hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
 </div>
 
 <script>
-const REQUIRED_HASH = "4f7d9b0da4c879323361097781c817239bd1290e0aa267b4ee19a257210f179c";
+const REQUIRED_HASH = "d19e26833ecb921c610d0a5951da2432bb1a0fe4628190ec7d941696eff286df";
 async function sha256(str){
   const enc = new TextEncoder().encode(str);
   const buf = await crypto.subtle.digest('SHA-256', enc);
