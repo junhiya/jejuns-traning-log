@@ -55,6 +55,8 @@
     line-height:1.4;
     word-break:keep-all;
   }
+  /* 웹에서는 한 줄, 좁은 화면에서만 두 줄로 끊는다 */
+  .header h1 .line{display:inline;}
   .header .rule{
     width:60px;height:4px;background:#3E7CB8;
     margin:20px auto 0;border-radius:2px;
@@ -86,25 +88,30 @@
     color:#fff;
     padding:22px 28px;
     border-radius:16px;
-    font-size:22px;
-    font-weight:700;
     line-height:1.35;
     word-break:keep-all;
     transition:transform .12s ease, box-shadow .12s ease;
   }
+  /* 버튼의 주인공 — 한 단계 키우고 나머지를 확실히 낮춰 위계를 만든다 */
+  .btn .label{
+    display:block;
+    font-size:27px;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  /* 작성 주체 — 제목과 같은 줄에, 작고 가볍게 */
+  .btn .role{
+    font-size:15px;
+    font-weight:400;
+    opacity:.75;
+    white-space:nowrap;
+  }
   .btn small{
     display:block;
-    font-size:14px;
+    font-size:13px;
     font-weight:400;
-    margin-top:8px;
-    opacity:.85;
-  }
-  /* 작성 주체 — 제목과 같은 줄에, 한 단계 작고 가볍게 */
-  .btn .role{
-    font-size:16px;
-    font-weight:400;
-    opacity:.85;
-    white-space:nowrap;
+    margin-top:7px;
+    opacity:.7;
   }
   .btn.resident{
     background:var(--blue);
@@ -144,13 +151,18 @@
     .btn:hover{transform:none;}
   }
   @media (max-width:600px){
+    /* 좁은 화면에서는 위로 붙인다 — 세로 가운데 정렬이면 첫 화면에서 제목이 밀린다 */
+    body{align-items:flex-start;}
     .header{padding:32px 24px 28px;}
     .header .eyebrow{font-size:11px;letter-spacing:2px;}
     .header h1{font-size:23px;}
+    .header h1 .line{display:block;}
     .buttons{padding:20px 20px 8px;gap:14px;}
-    .btn{font-size:18px;padding:18px 16px;min-height:72px;}
-    .btn .role{font-size:14px;}
-    .btn small{font-size:13px;}
+    .btn{padding:18px 16px;min-height:72px;}
+    .btn .label{font-size:21px;}
+    /* 폭이 좁아 긴 버튼만 줄바꿈되면 셋의 짜임이 어긋난다 — 일괄로 아랫줄에 */
+    .btn .role{display:block;font-size:13px;margin-top:3px;}
+    .btn small{font-size:12px;margin-top:5px;}
   }
 </style>
 </head>
@@ -158,24 +170,24 @@
   <div class="card">
     <div class="header">
       <div class="eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-      <h1>제주대학교 신경외과<br>수련 로그북</h1>
+      <h1><span class="line">제주대학교 신경외과</span> <span class="line">수련 로그북</span></h1>
       <div class="rule"></div>
     </div>
 
     <div class="buttons" style="padding-top:34px;">
       <a class="btn resident" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSfA02x2y-I3mtoWBGbxanM1r5rcTJXr2SXM3yPLL3KD7pEjpg/viewform">
-        수련 로그북 입력 <span class="role">(전공의 작성)</span>
+        <span class="label">수련 로그북 입력 <span class="role">(전공의 작성)</span></span>
         <small>수술·시술 참여 기록 · EPA 자가평가 · 주간보고</small>
       </a>
       <a class="btn faculty" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSctycOUjmokDceZ-wQUy29RiXTUXlt012bt9FAp9A2BkMqMaA/viewform">
-        수술·시술 피드백 입력 <span class="role">(지도전문의 작성)</span>
+        <span class="label">수술·시술 피드백 입력 <span class="role">(지도전문의 작성)</span></span>
         <small>체크리스트 기반 · 1분 이내</small>
       </a>
       <a class="btn mentoring" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLScAgW0JL7JGWAdWe8yLEpL8kmvvbTQjBIjZuNIB2MIRSLxKaw/viewform">
-        면담·지도기록 입력 <span class="role">(지도전문의 작성)</span>
+        <span class="label">면담·지도기록 입력 <span class="role">(지도전문의 작성)</span></span>
         <small>개별면담 · 회진지도 등 기타</small>
       </a>
     </div>
