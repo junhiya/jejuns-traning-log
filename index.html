@@ -26,13 +26,13 @@
     display:flex;
     align-items:safe center;
     justify-content:center;
-    padding:20px 16px;
+    padding:24px 16px;
   }
   .card{
     width:100%;
     /* 글자 덩어리는 300px 남짓인데 카드가 920px이면 버튼이 7:1로 납작해진다.
        좁혀서 비례를 잡고, 남은 세로 여유를 여백으로 돌린다. */
-    max-width:640px;
+    max-width:680px;
     background:#fff;
     border-radius:22px;
     overflow:hidden;
@@ -42,17 +42,17 @@
   .header{
     background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
     text-align:center;
-    padding:36px 32px 30px;
+    padding:40px 32px 34px;
   }
   .header .eyebrow{
     color:#9FB8D2;
     font-size:13px;
     letter-spacing:3px;
-    margin-bottom:12px;
+    margin-bottom:14px;
   }
   .header h1{
     color:#fff;
-    font-size:29px;
+    font-size:30px;
     font-weight:700;
     line-height:1.4;
     word-break:keep-all;
@@ -61,7 +61,7 @@
   .header h1 .line{display:inline;}
   .header .rule{
     width:60px;height:4px;background:#3E7CB8;
-    margin:18px auto 0;border-radius:2px;
+    margin:21px auto 0;border-radius:2px;
   }
   /* 안내 */
   .lead{
@@ -74,10 +74,10 @@
   .lead b{color:var(--navy);}
   /* 버튼 */
   .buttons{
-    padding:26px 34px 12px;
+    padding:30px 38px 14px;
     display:flex;
     flex-direction:column;
-    gap:15px;
+    gap:16px;
   }
   .btn{
     display:flex;
@@ -89,7 +89,7 @@
     text-align:center;
     color:#fff;
     /* 설명문 아래가 허전해 보이지 않게 아래 여백을 위보다 살짝 적게 */
-    padding:24px 28px 21px;
+    padding:27px 32px 24px;
     border-radius:16px;
     line-height:1.35;
     word-break:keep-all;
@@ -98,7 +98,7 @@
   /* 버튼의 주인공 — 한 단계 키우고 나머지를 확실히 낮춰 위계를 만든다 */
   .btn .label{
     display:block;
-    font-size:27px;
+    font-size:28px;
     font-weight:700;
     line-height:1.2;
     letter-spacing:-.01em;
@@ -106,9 +106,9 @@
   /* 작성 주체 — 제목 바로 아래에 바짝 붙여 한 덩어리로 읽히게 */
   .btn .role{
     display:block;
-    margin-top:1px;
+    margin-top:2px;
     line-height:1.15;
-    font-size:15px;
+    font-size:16px;
     font-weight:400;
     opacity:.75;
     white-space:nowrap;
@@ -116,9 +116,9 @@
   /* 설명 — 제목 덩어리와 한 칸 띄워 세 번째 단으로 */
   .btn small{
     display:block;
-    font-size:14px;
+    font-size:15px;
     font-weight:400;
-    margin-top:11px;
+    margin-top:13px;
     opacity:.72;
   }
   .btn.resident{
@@ -140,9 +140,9 @@
   /* 하단 */
   .footer{
     text-align:center;
-    padding:20px 28px 28px;
+    padding:23px 28px 31px;
     font-size:15px;
-    line-height:1.75;
+    line-height:1.8;
     color:var(--muted);
   }
   .memo-link{
@@ -171,8 +171,23 @@
     .btn .role{font-size:13px;}
     .btn small{font-size:13px;margin-top:8px;}
   }
-  /* 세로가 짧은 화면 — 스크롤 없이 한 화면에 담기도록 두 단계로 줄인다.
-     위계(제목>작성 주체>설명)와 여백 비율은 그대로 두고 크기만 축소한다. */
+  /* 세로가 짧은 화면 — 스크롤 없이 한 화면에 담기도록 단계별로 줄인다.
+     위계(제목>작성 주체>설명)와 여백 비율은 그대로 두고 크기만 축소한다.
+     기본값은 세로가 넉넉한 화면용이고, 아래로 갈수록 한 단씩 조인다. */
+  @media (min-width:601px) and (max-height:850px){
+    body{padding:20px 16px;}
+    .card{max-width:640px;}
+    .header{padding:36px 32px 30px;}
+    .header .eyebrow{margin-bottom:12px;}
+    .header h1{font-size:29px;}
+    .header .rule{margin-top:18px;}
+    .buttons{padding:26px 34px 12px;gap:15px;}
+    .btn{padding:24px 28px 21px;}
+    .btn .label{font-size:27px;}
+    .btn .role{margin-top:1px;font-size:15px;}
+    .btn small{font-size:14px;margin-top:11px;}
+    .footer{padding:20px 28px 28px;line-height:1.75;}
+  }
   @media (min-width:601px) and (max-height:790px){
     body{padding:16px;}
     .header{padding:28px 32px 24px;}
