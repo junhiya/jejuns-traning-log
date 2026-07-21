@@ -97,10 +97,14 @@
     display:block;
     font-size:27px;
     font-weight:700;
+    line-height:1.2;
     letter-spacing:-.01em;
   }
-  /* 작성 주체 — 제목과 같은 줄에, 작고 가볍게 */
+  /* 작성 주체 — 제목 바로 아래에 바짝 붙여 한 덩어리로 읽히게 */
   .btn .role{
+    display:block;
+    margin-top:1px;
+    line-height:1.15;
     font-size:15px;
     font-weight:400;
     opacity:.75;
@@ -160,8 +164,7 @@
     .buttons{padding:20px 20px 8px;gap:14px;}
     .btn{padding:18px 16px;min-height:72px;}
     .btn .label{font-size:21px;}
-    /* 폭이 좁아 긴 버튼만 줄바꿈되면 셋의 짜임이 어긋난다 — 일괄로 아랫줄에 */
-    .btn .role{display:block;font-size:13px;margin-top:3px;}
+    .btn .role{font-size:13px;}
     .btn small{font-size:12px;margin-top:5px;}
   }
 </style>
