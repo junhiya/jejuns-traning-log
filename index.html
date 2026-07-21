@@ -80,7 +80,7 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    height:88px;
+    min-height:88px;
     text-decoration:none;
     text-align:center;
     color:#fff;
@@ -88,6 +88,8 @@
     border-radius:16px;
     font-size:22px;
     font-weight:700;
+    line-height:1.35;
+    word-break:keep-all;
     transition:transform .12s ease, box-shadow .12s ease;
   }
   .btn small{
@@ -96,6 +98,13 @@
     font-weight:400;
     margin-top:8px;
     opacity:.85;
+  }
+  /* 작성 주체 — 제목과 같은 줄에, 한 단계 작고 가볍게 */
+  .btn .role{
+    font-size:16px;
+    font-weight:400;
+    opacity:.85;
+    white-space:nowrap;
   }
   .btn.resident{
     background:var(--blue);
@@ -139,7 +148,9 @@
     .header .eyebrow{font-size:11px;letter-spacing:2px;}
     .header h1{font-size:23px;}
     .buttons{padding:20px 20px 8px;gap:14px;}
-    .btn{font-size:18px;padding:18px 16px;height:72px;}
+    .btn{font-size:18px;padding:18px 16px;min-height:72px;}
+    .btn .role{font-size:14px;}
+    .btn small{font-size:13px;}
   }
 </style>
 </head>
@@ -154,17 +165,18 @@
     <div class="buttons" style="padding-top:34px;">
       <a class="btn resident" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSfA02x2y-I3mtoWBGbxanM1r5rcTJXr2SXM3yPLL3KD7pEjpg/viewform">
-        전공의 로그북 입력
-        <small>수술 참여 기록 · EPA 자가평가</small>
+        수련 로그북 입력 <span class="role">(전공의 작성)</span>
+        <small>수술·시술 참여 기록 · EPA 자가평가 · 주간보고</small>
       </a>
       <a class="btn faculty" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSctycOUjmokDceZ-wQUy29RiXTUXlt012bt9FAp9A2BkMqMaA/viewform">
-        지도전문의 피드백 입력
+        수술·시술 피드백 입력 <span class="role">(지도전문의 작성)</span>
         <small>체크리스트 기반 · 1분 이내</small>
       </a>
       <a class="btn mentoring" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLScAgW0JL7JGWAdWe8yLEpL8kmvvbTQjBIjZuNIB2MIRSLxKaw/viewform">
-        면담·지도기록 입력
+        면담·지도기록 입력 <span class="role">(지도전문의 작성)</span>
+        <small>개별면담 · 회진지도 등 주요사항</small>
       </a>
     </div>
 
