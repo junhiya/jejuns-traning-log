@@ -30,7 +30,9 @@
   }
   .card{
     width:100%;
-    max-width:920px;
+    /* 글자 덩어리는 300px 남짓인데 카드가 920px이면 버튼이 7:1로 납작해진다.
+       좁혀서 비례를 잡고, 남은 세로 여유를 여백으로 돌린다. */
+    max-width:640px;
     background:#fff;
     border-radius:22px;
     overflow:hidden;
@@ -40,17 +42,17 @@
   .header{
     background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
     text-align:center;
-    padding:32px 36px 26px;
+    padding:36px 32px 30px;
   }
   .header .eyebrow{
     color:#9FB8D2;
-    font-size:14px;
-    letter-spacing:4px;
-    margin-bottom:10px;
+    font-size:13px;
+    letter-spacing:3px;
+    margin-bottom:12px;
   }
   .header h1{
     color:#fff;
-    font-size:32px;
+    font-size:29px;
     font-weight:700;
     line-height:1.4;
     word-break:keep-all;
@@ -59,7 +61,7 @@
   .header h1 .line{display:inline;}
   .header .rule{
     width:60px;height:4px;background:#3E7CB8;
-    margin:14px auto 0;border-radius:2px;
+    margin:18px auto 0;border-radius:2px;
   }
   /* 안내 */
   .lead{
@@ -72,10 +74,10 @@
   .lead b{color:var(--navy);}
   /* 버튼 */
   .buttons{
-    padding:24px 48px 10px;
+    padding:26px 34px 12px;
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:15px;
   }
   .btn{
     display:flex;
@@ -87,7 +89,7 @@
     text-align:center;
     color:#fff;
     /* 설명문 아래가 허전해 보이지 않게 아래 여백을 위보다 살짝 적게 */
-    padding:20px 28px 17px;
+    padding:24px 28px 21px;
     border-radius:16px;
     line-height:1.35;
     word-break:keep-all;
@@ -138,9 +140,9 @@
   /* 하단 */
   .footer{
     text-align:center;
-    padding:16px 28px 24px;
+    padding:20px 28px 28px;
     font-size:15px;
-    line-height:1.7;
+    line-height:1.75;
     color:var(--muted);
   }
   .memo-link{
@@ -169,21 +171,35 @@
     .btn .role{font-size:13px;}
     .btn small{font-size:13px;margin-top:8px;}
   }
-  /* 노트북처럼 세로가 짧은 화면 — 스크롤 없이 한 화면에 담기도록 한 단 줄인다.
+  /* 세로가 짧은 화면 — 스크롤 없이 한 화면에 담기도록 두 단계로 줄인다.
      위계(제목>작성 주체>설명)와 여백 비율은 그대로 두고 크기만 축소한다. */
   @media (min-width:601px) and (max-height:790px){
-    body{padding:12px 16px;}
-    .header{padding:24px 36px 20px;}
-    .header .eyebrow{font-size:12px;letter-spacing:3px;margin-bottom:8px;}
-    .header h1{font-size:27px;}
-    .header .rule{margin-top:11px;height:3px;}
-    .buttons{padding:18px 48px 8px;gap:11px;}
-    .btn{padding:15px 28px 13px;min-height:0;}
-    .btn .label{font-size:23px;}
+    body{padding:16px;}
+    .header{padding:28px 32px 24px;}
+    .header .eyebrow{margin-bottom:9px;}
+    .header h1{font-size:26px;}
+    .header .rule{margin-top:13px;}
+    .buttons{padding:20px 34px 10px;gap:12px;}
+    .btn{padding:19px 28px 16px;min-height:0;}
+    .btn .label{font-size:25px;}
     .btn .role{font-size:14px;}
     .btn small{font-size:13px;margin-top:9px;}
-    .footer{padding:12px 28px 18px;font-size:14px;line-height:1.6;}
+    .footer{padding:15px 28px 20px;line-height:1.65;}
     .memo-link{margin-top:8px;}
+  }
+  @media (min-width:601px) and (max-height:680px){
+    body{padding:12px 16px;}
+    .header{padding:22px 32px 18px;}
+    .header .eyebrow{font-size:12px;letter-spacing:2px;margin-bottom:7px;}
+    .header h1{font-size:23px;}
+    .header .rule{margin-top:10px;height:3px;}
+    .buttons{padding:16px 34px 8px;gap:10px;}
+    .btn{padding:14px 24px 12px;}
+    .btn .label{font-size:22px;}
+    .btn .role{font-size:13px;}
+    .btn small{font-size:12px;margin-top:7px;}
+    .footer{padding:11px 28px 16px;font-size:14px;line-height:1.55;}
+    .memo-link{margin-top:6px;}
   }
 </style>
 </head>
