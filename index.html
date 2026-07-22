@@ -3,255 +3,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>제주대학교 신경외과 전공의 로그북</title>
+<title>제주대학교 신경외과 수련 로그북</title>
 <style>
   :root{
     --navy:#14385C;
     --navy-deep:#0E2A46;
+    --page:#0B2036;
     --blue:#1B6BB3;
     --blue-dark:#155a99;
     --teal:#0E7D6B;
     --teal-dark:#0b6a5b;
-    --bg:#F4F7FA;
-    --ink:#2B3A4A;
-    --muted:#7B8794;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{height:auto;}
   body{
     font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
-    background:var(--bg);
-    color:var(--ink);
+    background:var(--page);
+    color:#E8EEF4;
     min-height:100vh;
     display:flex;
-    align-items:safe center;
+    align-items:stretch;
     justify-content:center;
-    padding:24px 16px;
   }
-  .card{
-    width:100%;
-    /* 글자 덩어리는 300px 남짓인데 카드가 920px이면 버튼이 7:1로 납작해진다.
-       좁혀서 비례를 잡고, 남은 세로 여유를 여백으로 돌린다. */
-    max-width:680px;
-    background:#fff;
-    border-radius:22px;
+  /* ── 왼쪽: 그림 무대 ── */
+  .stage{
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    padding:28px 0 28px 28px;
+  }
+  .art{
+    position:relative;
+    height:calc(100vh - 56px);
+    max-height:820px;
+    aspect-ratio:1280/1687;
+    border-radius:14px;
     overflow:hidden;
-    box-shadow:0 8px 30px rgba(20,56,92,.12);
+    box-shadow:0 12px 40px rgba(0,0,0,.45);
   }
-  /* 머리글 */
-  .header{
-    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
-    text-align:center;
-    padding:40px 32px 34px;
+  /* 클릭·무브 이벤트는 .art 컨테이너가 직접 받는다(자식 레이어는 통과) */
+  .art .layer, .art .credit{ pointer-events:none; }
+  .art .layer{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
   }
-  .header .eyebrow{
-    color:#9FB8D2;
+  /* 기본 그림 — 버튼에 올리면 은은하게 어두워진다 */
+  .base{
+    transition:filter .45s ease;
+  }
+  body[data-hi="res"] .base,
+  body[data-hi="fac"] .base,
+  body[data-hi="mentor"] .base,
+  body[data-hi="memo"] .base,
+  body[data-hi="report"] .base{
+    filter:brightness(.38) saturate(.8);
+  }
+  /* 밝은 사본 — 인물 픽셀에 딱 맞는 알파 마스크(PNG)로 해당 인물만 드러낸다 */
+  .spot{
+    opacity:0;
+    transition:opacity .45s ease;
+    -webkit-mask-size:100% 100%;      mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;    mask-repeat:no-repeat;
+    -webkit-mask-mode:alpha;          mask-mode:alpha;
+  }
+  .s-res{    -webkit-mask-image:url(mask_res.png);    mask-image:url(mask_res.png); }
+  .s-fac{    -webkit-mask-image:url(mask_fac.png);    mask-image:url(mask_fac.png); }
+  .s-mentor{ -webkit-mask-image:url(mask_mentor.png); mask-image:url(mask_mentor.png); }
+  .s-memo{   -webkit-mask-image:url(mask_memo.png);   mask-image:url(mask_memo.png); }
+  .s-report{ -webkit-mask-image:url(mask_report.png); mask-image:url(mask_report.png); }
+  body[data-hi="res"]    .s-res{opacity:1;}
+  body[data-hi="fac"]    .s-fac{opacity:1;}
+  body[data-hi="mentor"] .s-mentor{opacity:1;}
+  body[data-hi="memo"]   .s-memo{opacity:1;}
+  body[data-hi="report"] .s-report{opacity:1;}
+  .credit{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:18px 14px 8px;
+    font-size:11px;
+    text-align:right;
+    color:rgba(255,255,255,.75);
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+  }
+  /* ── 오른쪽: 제목 + 버튼 ── */
+  .panel{
+    flex:0 1 620px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:40px 48px;
+    gap:0;
+  }
+  .eyebrow{
+    color:#7E9BB8;
     font-size:13px;
     letter-spacing:3px;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
-  .header h1{
+  h1{
     color:#fff;
-    font-size:30px;
+    font-size:32px;
     font-weight:700;
-    line-height:1.4;
-    word-break:keep-all;
-  }
-  /* 웹에서는 한 줄, 좁은 화면에서만 두 줄로 끊는다 */
-  .header h1 .line{display:inline;}
-  .header .rule{
-    width:60px;height:4px;background:#3E7CB8;
-    margin:21px auto 0;border-radius:2px;
-  }
-  /* 안내 */
-  .lead{
-    text-align:center;
-    padding:24px 28px 4px;
-    font-size:16px;
-    line-height:1.7;
-    color:#4A5A6A;
-  }
-  .lead b{color:var(--navy);}
-  /* 버튼 */
-  .buttons{
-    padding:30px 38px 14px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
-  .btn{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    min-height:88px;
-    text-decoration:none;
-    text-align:center;
-    color:#fff;
-    /* 설명문 아래가 허전해 보이지 않게 아래 여백을 위보다 살짝 적게 */
-    padding:27px 32px 24px;
-    border-radius:16px;
     line-height:1.35;
     word-break:keep-all;
+  }
+  .rule{
+    width:60px;height:4px;background:#3E7CB8;
+    margin:20px 0 30px;border-radius:2px;
+  }
+  .buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+  }
+  .btn{
+    display:flex;flex-direction:column;justify-content:center;
+    text-decoration:none;text-align:left;color:#fff;
+    padding:20px 26px 18px;border-radius:14px;
+    line-height:1.35;word-break:keep-all;
     transition:transform .12s ease, box-shadow .12s ease;
   }
-  /* 버튼의 주인공 — 한 단계 키우고 나머지를 확실히 낮춰 위계를 만든다 */
-  .btn .label{
-    display:block;
-    font-size:28px;
-    font-weight:700;
-    line-height:1.2;
-    letter-spacing:-.01em;
-  }
-  /* 작성 주체 — 제목 바로 아래에 바짝 붙여 한 덩어리로 읽히게 */
-  .btn .role{
-    display:block;
-    margin-top:2px;
-    line-height:1.15;
-    font-size:16px;
-    font-weight:400;
-    opacity:.75;
-    white-space:nowrap;
-  }
-  /* 설명 — 제목 덩어리와 한 칸 띄워 세 번째 단으로 */
-  .btn small{
-    display:block;
-    font-size:15px;
-    font-weight:400;
-    margin-top:13px;
-    opacity:.72;
-  }
-  .btn.resident{
-    background:var(--blue);
-    box-shadow:0 4px 12px rgba(27,107,179,.30);
-  }
+  .btn .label{font-size:23px;font-weight:700;line-height:1.25;letter-spacing:-.01em;}
+  .btn .role{font-size:14px;font-weight:400;opacity:.75;margin-left:6px;}
+  .btn small{display:block;font-size:13.5px;font-weight:400;margin-top:7px;opacity:.72;}
+  .btn.resident{background:var(--blue);}
   .btn.resident:hover{background:var(--blue-dark);transform:translateY(-2px);}
-  .btn.faculty{
-    background:var(--teal);
-    box-shadow:0 4px 12px rgba(14,125,107,.30);
-  }
+  .btn.faculty{background:var(--teal);}
   .btn.faculty:hover{background:var(--teal-dark);transform:translateY(-2px);}
-  .btn.mentoring{
-    background:var(--navy);
-    box-shadow:0 4px 12px rgba(20,56,92,.30);
-  }
+  .btn.mentoring{background:var(--navy);}
   .btn.mentoring:hover{background:var(--navy-deep);transform:translateY(-2px);}
   .btn:focus-visible{outline:3px solid #FFB84D;outline-offset:3px;}
-  /* 하단 */
+  .hint{
+    margin-top:16px;
+    font-size:12.5px;
+    color:#5F7A94;
+  }
   .footer{
-    text-align:center;
-    padding:23px 28px 31px;
-    font-size:15px;
+    margin-top:30px;
+    font-size:14px;
     line-height:1.8;
-    color:var(--muted);
+    color:#7E93A8;
   }
   .memo-link{
-    display:inline-block;
-    margin-top:10px;
-    font-size:12px;
-    color:#B4BEC7;
-    text-decoration:underline;
-    text-underline-offset:3px;
+    display:inline-block;margin-top:6px;font-size:12px;color:#54708C;
+    text-decoration:underline;text-underline-offset:3px;
   }
-  .memo-link:hover{color:var(--navy);}
+  .memo-link:hover{color:#9FB8D2;}
   @media (prefers-reduced-motion: reduce){
-    .btn{transition:none;}
-    .btn:hover{transform:none;}
+    .base,.spot,.btn{transition:none;}
   }
-  @media (max-width:600px){
-    /* 좁은 화면에서는 위로 붙인다 — 세로 가운데 정렬이면 첫 화면에서 제목이 밀린다 */
-    body{align-items:flex-start;}
-    .header{padding:32px 24px 28px;}
-    .header .eyebrow{font-size:11px;letter-spacing:2px;}
-    .header h1{font-size:23px;}
-    .header h1 .line{display:block;}
-    .buttons{padding:20px 20px 8px;gap:14px;}
-    .btn{padding:18px 16px;min-height:72px;}
+  /* ── 세로가 짧은 데스크톱(노트북) — 우측 패널이 넘치지 않게 단계별 축소 ── */
+  @media (min-width:881px) and (max-height:760px){
+    .panel{padding:28px 44px;}
+    h1{font-size:28px;}
+    .rule{margin:16px 0 22px;}
+    .buttons{gap:12px;}
+    .btn{padding:16px 24px 14px;}
     .btn .label{font-size:21px;}
-    .btn .role{font-size:13px;}
-    .btn small{font-size:13px;margin-top:8px;}
+    .btn small{margin-top:5px;}
+    .footer{margin-top:22px;}
   }
-  /* 세로가 짧은 화면 — 스크롤 없이 한 화면에 담기도록 단계별로 줄인다.
-     위계(제목>작성 주체>설명)와 여백 비율은 그대로 두고 크기만 축소한다.
-     기본값은 세로가 넉넉한 화면용이고, 아래로 갈수록 한 단씩 조인다. */
-  @media (min-width:601px) and (max-height:850px){
-    body{padding:20px 16px;}
-    .card{max-width:640px;}
-    .header{padding:36px 32px 30px;}
-    .header .eyebrow{margin-bottom:12px;}
-    .header h1{font-size:29px;}
-    .header .rule{margin-top:18px;}
-    .buttons{padding:26px 34px 12px;gap:15px;}
-    .btn{padding:24px 28px 21px;}
-    .btn .label{font-size:27px;}
-    .btn .role{margin-top:1px;font-size:15px;}
-    .btn small{font-size:14px;margin-top:11px;}
-    .footer{padding:20px 28px 28px;line-height:1.75;}
+  @media (min-width:881px) and (max-height:640px){
+    .panel{padding:20px 44px;}
+    .eyebrow{margin-bottom:8px;}
+    h1{font-size:24px;}
+    .rule{margin:12px 0 16px;}
+    .buttons{gap:10px;}
+    .btn{padding:12px 22px 11px;}
+    .btn .label{font-size:19px;}
+    .btn small{font-size:12.5px;margin-top:4px;}
+    .hint{margin-top:12px;}
+    .footer{margin-top:16px;line-height:1.65;}
   }
-  @media (min-width:601px) and (max-height:790px){
-    body{padding:16px;}
-    .header{padding:28px 32px 24px;}
-    .header .eyebrow{margin-bottom:9px;}
-    .header h1{font-size:26px;}
-    .header .rule{margin-top:13px;}
-    .buttons{padding:20px 34px 10px;gap:12px;}
-    .btn{padding:19px 28px 16px;min-height:0;}
-    .btn .label{font-size:25px;}
-    .btn .role{font-size:14px;}
-    .btn small{font-size:13px;margin-top:9px;}
-    .footer{padding:15px 28px 20px;line-height:1.65;}
-    .memo-link{margin-top:8px;}
-  }
-  @media (min-width:601px) and (max-height:680px){
-    body{padding:12px 16px;}
-    .header{padding:22px 32px 18px;}
-    .header .eyebrow{font-size:12px;letter-spacing:2px;margin-bottom:7px;}
-    .header h1{font-size:23px;}
-    .header .rule{margin-top:10px;height:3px;}
-    .buttons{padding:16px 34px 8px;gap:10px;}
-    .btn{padding:14px 24px 12px;}
-    .btn .label{font-size:22px;}
-    .btn .role{font-size:13px;}
-    .btn small{font-size:12px;margin-top:7px;}
-    .footer{padding:11px 28px 16px;font-size:14px;line-height:1.55;}
-    .memo-link{margin-top:6px;}
+  /* ── 모바일: 그림을 상단 히어로 배너로, 아래로 자연스럽게 페이드 ── */
+  @media (max-width:880px){
+    body{flex-direction:column;align-items:stretch;min-height:100vh;}
+    /* 그림을 화면 전체 배경으로 어둡게 깔기 */
+    .stage{
+      position:fixed;inset:0;z-index:0;
+      padding:0;width:100%;height:100vh;overflow:hidden;
+    }
+    .art{
+      height:100%;width:100%;
+      aspect-ratio:auto;max-width:none;max-height:none;
+      border-radius:0;box-shadow:none;pointer-events:none;
+    }
+    .art .layer{object-position:center 40%;}
+    .base{filter:brightness(.52) saturate(.95);}   /* 그림이 더 보이도록 밝게 */
+    .credit{display:none;}
+    .art .spot{display:none;}
+    body[data-hi="res"] .base,
+    body[data-hi="fac"] .base,
+    body[data-hi="mentor"] .base,
+    body[data-hi="memo"] .base,
+    body[data-hi="report"] .base{filter:brightness(.52) saturate(.95);}
+    .stage::after{                      /* 글자 있는 위·아래만 어둡게, 가운데는 그림 드러냄 */
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(180deg,
+        rgba(7,24,46,.78) 0%,
+        rgba(7,24,46,.40) 26%,
+        rgba(7,24,46,.36) 66%,
+        rgba(7,24,46,.84) 100%);
+    }
+    /* 제목·버튼을 배경 위에 */
+    .panel{
+      width:100%;max-width:none;
+      padding:58px 22px 40px;
+      position:relative;z-index:1;background:transparent;
+      text-align:center;
+    }
+    .eyebrow{margin-bottom:8px;}
+    h1{font-size:28px;}
+    .rule{margin:16px auto 26px;}
+    .buttons{gap:13px;}
+    /* 반투명 유리 버튼: 뒤의 집도의·수술 장면이 비쳐 보이고, 누르면(:active) 원래 색으로 */
+    .btn{
+      padding:18px 22px 16px;align-items:center;text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+      backdrop-filter:blur(3px) saturate(1.1);
+      -webkit-backdrop-filter:blur(3px) saturate(1.1);
+      border:1px solid rgba(255,255,255,.10);
+      transition:background .15s ease;
+    }
+    .btn.resident{background:rgba(27,107,179,.62);}
+    .btn.faculty{background:rgba(14,125,107,.62);}
+    .btn.mentoring{background:rgba(20,56,92,.58);}
+    .btn.resident:active{background:var(--blue);}
+    .btn.faculty:active{background:var(--teal);}
+    .btn.mentoring:active{background:var(--navy);}
+    .btn small{opacity:.85;}            /* 유리 위에서도 부제가 읽히도록 살짝 진하게 */
+    .btn .label{font-size:20px;}
+    .hint{display:none;}
+    .footer{margin-top:24px;}
   }
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="header">
-      <div class="eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-      <h1><span class="line">제주대학교 신경외과</span> <span class="line">수련 로그북</span></h1>
-      <div class="rule"></div>
+  <div class="stage">
+    <div class="art" id="art">
+      <img class="layer base" src="billroth.jpg"
+           alt="젤리크만, 빈 종합병원 빌로트의 수술 강의실 (1890)">
+      <!-- 전공의 버튼: 무대 아래 흰 가운 수술팀 -->
+      <img class="layer spot s-res" src="billroth.jpg" alt="" aria-hidden="true">
+      <!-- 수술·시술 피드백: 가운데 노란 앞치마의 빌로트 교수 -->
+      <img class="layer spot s-fac" src="billroth.jpg" alt="" aria-hidden="true">
+      <!-- 면담·지도기록: 청강생 개인 한 명 -->
+      <img class="layer spot s-mentor" src="billroth.jpg" alt="" aria-hidden="true">
+      <!-- 관리메모 -->
+      <img class="layer spot s-memo" src="billroth.jpg" alt="" aria-hidden="true">
+      <!-- 면담 준비 보고서 -->
+      <img class="layer spot s-report" src="billroth.jpg" alt="" aria-hidden="true">
+
+      <div class="credit">A. F. Seligmann, Der Billroth'sche Hörsaal (c. 1890) · Belvedere, Wien</div>
     </div>
+  </div>
+
+  <div class="panel">
+    <div class="eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
+    <h1>제주대학교 신경외과<br>수련 로그북</h1>
+    <div class="rule"></div>
 
     <div class="buttons">
-      <a class="btn resident" target="_blank"
+      <a class="btn resident" data-hi="res" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSfA02x2y-I3mtoWBGbxanM1r5rcTJXr2SXM3yPLL3KD7pEjpg/viewform">
         <span class="label">수련 로그북 입력 <span class="role">(전공의 작성)</span></span>
         <small>수술·시술 참여 기록 · EPA 자가평가 · 주간보고</small>
       </a>
-      <a class="btn faculty" target="_blank"
+      <a class="btn faculty" data-hi="fac" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSctycOUjmokDceZ-wQUy29RiXTUXlt012bt9FAp9A2BkMqMaA/viewform">
         <span class="label">수술·시술 피드백 입력 <span class="role">(지도전문의 작성)</span></span>
         <small>체크리스트 기반 · 1분 이내</small>
       </a>
-      <a class="btn mentoring" target="_blank"
+      <a class="btn mentoring" data-hi="mentor" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLScAgW0JL7JGWAdWe8yLEpL8kmvvbTQjBIjZuNIB2MIRSLxKaw/viewform">
         <span class="label">면담·지도기록 입력 <span class="role">(지도전문의 작성)</span></span>
         <small>개별면담 · 회진지도 등 기타</small>
       </a>
     </div>
 
+    <div class="hint">버튼에 마우스를 올리거나, 그림 속 인물을 직접 클릭해도 해당 메뉴로 이동합니다.</div>
+
     <p class="footer">
       문의: 책임지도전문의 김준회<br>
       이 페이지를 즐겨찾기에 등록 부탁드립니다.<br>
-      <a class="memo-link" target="_blank"
+      <a class="memo-link" data-hi="memo" target="_blank"
          href="https://docs.google.com/forms/d/e/1FAIpQLSfZwWqIwxlQkfAMwGOu6H1poh7XM3rh89UBh2gR7Wg1XrYHDQ/viewform">관리 메모</a>
       ·
-      <a class="memo-link" href="reports/index.html">면담 준비 보고서</a>
+      <a class="memo-link" data-hi="report" href="reports/index.html">면담 준비 보고서</a>
     </p>
   </div>
+
+<script>
+// ── 버튼/링크 호버 → 그림 스포트라이트 (기존 동작) ──
+document.querySelectorAll('[data-hi]').forEach(el=>{
+  const key = el.dataset.hi;
+  el.addEventListener('mouseenter', ()=>{ document.body.dataset.hi = key; });
+  el.addEventListener('mouseleave', ()=>{ document.body.dataset.hi = ''; });
+  el.addEventListener('focus',      ()=>{ document.body.dataset.hi = key; });
+  el.addEventListener('blur',       ()=>{ document.body.dataset.hi = ''; });
+});
+
+// ── 그림 클릭 → 해당 메뉴로 이동 (마스크 알파 히트테스트) ──
+// 링크의 실제 목적지는 오른쪽 <a data-hi>에서 그대로 가져온다(단일 출처).
+const LINK = {};
+document.querySelectorAll('a[data-hi]').forEach(a=>{
+  LINK[a.dataset.hi] = { href:a.href, target:a.getAttribute('target') };
+});
+// 겹칠 때 우선순위: 작고 구체적인 것 먼저
+const ORDER = ['report','memo','mentor','fac','res'];
+const MASK_FILE = {
+  res:'mask_res.png', fac:'mask_fac.png', mentor:'mask_mentor.png',
+  memo:'mask_memo.png', report:'mask_report.png'
+};
+const HITW = 512;            // 히트테스트용 축소 폭(메모리 절약, 정확도 충분)
+const maskData = {};         // key → {data, w, h}
+let masksReady = false, readyCount = 0;
+
+function loadMask(key, file){
+  const im = new Image();
+  im.onload = ()=>{
+    const scale = HITW / im.naturalWidth;
+    const c = document.createElement('canvas');
+    c.width = HITW; c.height = Math.round(im.naturalHeight * scale);
+    const cx = c.getContext('2d');
+    cx.drawImage(im, 0, 0, c.width, c.height);
+    try{
+      const d = cx.getImageData(0, 0, c.width, c.height);
+      maskData[key] = { data:d.data, w:c.width, h:c.height };
+    }catch(err){
+      // file://에서 캔버스가 오염되면 픽셀을 못 읽음 → HTTP에서만 클릭 동작
+      console.warn('mask 읽기 실패(로컬 file:// 여서일 수 있음):', key, err.message);
+    }
+    if(++readyCount === ORDER.length) masksReady = true;
+  };
+  im.onerror = ()=>{ if(++readyCount === ORDER.length) masksReady = true; };
+  im.src = file;
+}
+ORDER.forEach(k=> loadMask(k, MASK_FILE[k]));
+
+const art = document.getElementById('art');
+function hitAt(clientX, clientY){
+  const rect = art.getBoundingClientRect();
+  const px = (clientX - rect.left) / rect.width;
+  const py = (clientY - rect.top) / rect.height;
+  if(px < 0 || px > 1 || py < 0 || py > 1) return null;
+  for(const key of ORDER){
+    const m = maskData[key];
+    if(!m) continue;
+    const x = Math.min(m.w-1, Math.floor(px * m.w));
+    const y = Math.min(m.h-1, Math.floor(py * m.h));
+    if(m.data[(y * m.w + x) * 4 + 3] > 40) return key;
+  }
+  return null;
+}
+
+// 그림 위에서 마우스를 움직이면: 해당 인물 하이라이트 + 손가락 커서
+art.addEventListener('mousemove', e=>{
+  const k = hitAt(e.clientX, e.clientY);
+  document.body.dataset.hi = k || '';
+  art.style.cursor = k ? 'pointer' : 'default';
+});
+art.addEventListener('mouseleave', ()=>{
+  document.body.dataset.hi = '';
+  art.style.cursor = 'default';
+});
+// 클릭(탭)하면 해당 메뉴로 이동
+art.addEventListener('click', e=>{
+  const k = hitAt(e.clientX, e.clientY);
+  if(!k) return;
+  const l = LINK[k];
+  if(!l) return;
+  if(l.target === '_blank') window.open(l.href, '_blank', 'noopener');
+  else window.location.href = l.href;
+});
+</script>
 </body>
 </html>
