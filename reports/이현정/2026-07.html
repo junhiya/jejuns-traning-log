@@ -62,9 +62,9 @@ li.li2-week{border-left-color:var(--teal);background:#F1FAF7;}
 li.li2-week:hover{box-shadow:0 5px 16px rgba(14,125,107,.16);}
 li.li2-week .c-date,li.li2-week .c-name{color:var(--teal-dark,#0b6a5b);}
 li.li2-week .c-meta{color:var(--teal);}
-/* 면담·지도기록 카드: 남색 계열. 원문 페이지가 없어 클릭 링크 없음(호버 리프트도 끔) */
+/* 면담·지도기록 카드: 남색 계열 */
 li.li2-mentor{border-left-color:var(--navy);background:#F6F8FB;}
-li.li2-mentor:hover{transform:none;box-shadow:none;}
+li.li2-mentor:hover{box-shadow:0 5px 16px rgba(20,56,92,.18);}
 li.li2-mentor .c-date,li.li2-mentor .c-name{color:var(--navy);}
 li.li2 .li-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;color:var(--navy);font-size:15px;}
 li.li2 .li-head a{font-size:14px;font-weight:700;white-space:nowrap;}
@@ -79,7 +79,7 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 .ai{border-left:4px solid var(--teal);background:#F3FAF8;border-radius:0 12px 12px 0;padding:16px 20px;margin-top:10px;}
 .ai ul{margin-left:18px;}
 /* AI 카드는 자체 청록 테두리가 있으니, 안쪽 소제목(h2·h3)의 액센트 바는 빼서 "띠 안에 띠"를 막는다.
-   소제목은 카드 테마(청록)에 맞춰 작게 통일 — ai-notes가 ##/### 어느 쪽이어도 동일하게 보이게. */
+   소제목은 카드 테마(청록)에 맞춰 작게 통일 — AI 섹션 소제목이 ##/### 어느 쪽이어도 동일하게 보이게. */
 .ai h2,.ai h3{padding-left:0;font-size:15px;color:var(--teal-dark);
   margin:16px 0 8px;letter-spacing:0;border-top:none;}
 .ai h2:first-child,.ai h3:first-child{margin-top:0;}
@@ -147,7 +147,7 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
 <h1>이현정 — 2026년 7월 <span class="badge">4년차</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">본원 · 면담 준비 보고서 · 생성 2026-07-25 00:35</div>
+<div class="mh-meta">본원 · 면담 준비 보고서 · 생성 2026-07-25 00:54</div>
 </div>
 
 <div class="card">
@@ -174,7 +174,9 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 </div>
 <div class="card">
 <h2>면담 및 지도이력</h2>
-<p class='empty'>면담 기록이 없습니다.</p>
+<ul>
+<li>면담 기록 없음</li>
+</ul>
 </div>
 <div class="card">
 <h2>누적 (전 기간)</h2>
@@ -198,13 +200,13 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="card">
 <h2>AI 분석 및 제안</h2>
 <div class="ai">
-<h2>읽히는 패턴</h2>
+<h3>읽히는 패턴</h3>
 <ul>
 <li><strong>해부학적 구조 파악이 유일하게 일관된 약점.</strong> 5건 중 4건에서 자기평가·피드백 한쪽 이상이 <span class="sym-dn">▼</span>, 개두·혈관내·척추 세 갈래 모두에서 나온다 — 술 전 해부 준비 습관의 문제. 본인도 같은 항목을 스스로 <span class="sym-dn">▼</span>로 인지하고 학습 계획까지 세워, 자기인식이 아니라 준비 지원이 필요한 상황.</li>
 <li><strong>자기평가가 피드백보다 엄격하고 성찰이 구체적.</strong> coil·ACDF에서 지도전문의보다 본인이 더 많은 항목을 <span class="sym-dn">▼</span>로 봤고, 케이스마다 아쉬운 지점 → 원인 → 다음 행동을 적었다(fascia 절개 순서, Perclose 단계 등). 방어적 태도를 걱정할 근거는 없다.</li>
 <li><strong>중재시술은 관찰 단계(L1)에 정체.</strong> coil·CAS 모두 L1, 본인이 애로사항에 &quot;증례 경험 기회 희망&quot;을 직접 적었다. 학습 준비는 돼 있으니 기회 배정이 다음 병목.</li>
 </ul>
-<h2>제안</h2>
+<h3>제안</h3>
 <ul>
 <li><strong>면담은 긍정 프레임으로 시작.</strong> &quot;자기평가가 엄격하고 성찰이 구체적&quot;임을 먼저 짚은 뒤 해부 준비 습관으로 넘어가면 코칭이 순하게 붙는다. 약속된 ACDF 강의(김준회)는 cervical 전방 approach 해부와 묶어서.</li>
 <li><strong>중재시술 기회를 면담 의제로.</strong> 임종국 교수님과 관찰 → 보조(L2) 상향을 논의할 시점. Perclose는 본인이 재도전 의사를 두 번 적었으니 다음 기회에 직접 시행 + 피드백이 좋은 첫 단추.</li>
