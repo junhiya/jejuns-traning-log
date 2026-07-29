@@ -163,7 +163,25 @@ a.pill-link:hover .pill{box-shadow:0 2px 8px rgba(20,56,92,.18);}
 <script>
 const API = 'https://script.google.com/macros/s/AKfycbyLYlN3hMdVAXQgoo21NxZk-V8LHGLk5Z-UqyU6hu0IBkrCyL8t4lfP2mlrp0Awre8/exec';
 const MONTH_LABEL = m => m === '기타' ? '날짜 미상' : `${m.slice(0,4)}년 ${parseInt(m.slice(5),10)}월`;
-let DATA = null, MONTH = null;
+let DATA = null, MONTH = null, REFRESHING = false;
+
+// 마지막 성공 응답을 저장해 두고 다음 방문 때 즉시 그린다(백그라운드로 최신화) —
+// 웹앱 왕복(수 초)을 기다리지 않게 하는 체감 속도 장치. 링크(수정·프리필)는 불변이라 안전.
+function saveCache(data) {
+  const rec = JSON.stringify({ at: Date.now(), data });
+  try {
+    if (data.editMode) sessionStorage.setItem('status_cache_edit', rec);
+    else localStorage.setItem('status_cache', rec);
+  } catch (e) {}
+}
+
+function readCache(withEditPw) {
+  try {
+    const raw = (withEditPw && sessionStorage.getItem('status_cache_edit'))
+      || localStorage.getItem('status_cache');
+    return raw ? JSON.parse(raw).data : null;
+  } catch (e) { return null; }
+}
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -187,6 +205,8 @@ async function load(pw) {
     return false;
   }
   DATA = data;
+  saveCache(data);
+  REFRESHING = false;
   const months = allMonths();
   if (!MONTH || !months.includes(MONTH)) MONTH = months[months.length - 1] || null;
   render();
@@ -201,6 +221,13 @@ function allMonths() {
 }
 
 function showError(msg) {
+  if (DATA) {  // 저장본을 이미 그려 둔 상태 — 화면은 유지하고 머리띠만 알린다
+    REFRESHING = false;
+    document.getElementById('stamp').innerHTML =
+      `${esc(msg)} 저장된 이전 현황을 표시 중입니다 · ` +
+      `<a href="#" onclick="location.reload();return false;">다시 시도</a>`;
+    return;
+  }
   document.getElementById('stamp').textContent = '연결 실패';
   document.getElementById('pending').innerHTML = '';
   document.getElementById('sections').innerHTML =
@@ -213,10 +240,11 @@ const fillLink = c => c.fillUrl
 
 function render() {
   const now = new Date();
-  document.getElementById('stamp').innerHTML =
-    `시트 실시간 반영 · 마지막 확인 ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} · ` +
-    `<a href="#" onclick="location.reload();return false;">새로고침</a>` +
-    (DATA.editMode ? ' · <span style="color:#8FD3C6;font-weight:700;">수정 모드</span>' : '');
+  document.getElementById('stamp').innerHTML = REFRESHING
+    ? '저장된 현황을 먼저 표시했습니다 · <span style="color:#8FD3C6;">최신 데이터 확인 중&hellip;</span>'
+    : `시트 실시간 반영 · 마지막 확인 ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} · ` +
+      `<a href="#" onclick="location.reload();return false;">새로고침</a>` +
+      (DATA.editMode ? ' · <span style="color:#8FD3C6;font-weight:700;">수정 모드</span>' : '');
 
   const bar = document.getElementById('editbar');
   bar.innerHTML = DATA.editMode
@@ -337,11 +365,22 @@ document.getElementById('pwform').addEventListener('submit', async e => {
 });
 
 (async () => {
-  const saved = sessionStorage.getItem('status_edit_pw');
-  if (saved) {
-    const ok = await load(saved);           // 이 세션에서 이미 인증됨 — 바로 수정 모드로
+  const savedPw = sessionStorage.getItem('status_edit_pw');
+  const cached = readCache(!!savedPw);
+  if (cached) {                             // 저장본 즉시 렌더 → 백그라운드 최신화
+    DATA = cached;
+    REFRESHING = true;
+    const months = allMonths();
+    MONTH = months[months.length - 1] || null;
+    render();
+  }
+  if (savedPw) {
+    const ok = await load(savedPw);         // 이 세션에서 이미 인증됨 — 바로 수정 모드로
     if (ok === true) return;
-    sessionStorage.removeItem('status_edit_pw');
+    if (ok === 'wrong') {                   // 비번이 바뀐 경우만 세션 정리, 네트워크 실패는 유지
+      sessionStorage.removeItem('status_edit_pw');
+      sessionStorage.removeItem('status_cache_edit');
+    } else return;                          // showError가 저장본 화면을 유지한 상태
   }
   await load();
 })();
