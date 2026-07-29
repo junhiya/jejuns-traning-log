@@ -51,6 +51,11 @@ td a:hover, li a:hover{text-decoration:underline;}
 .pill.pending{background:#FBEAE2;color:#B3401B;}
 .notice{border-left:4px solid var(--blue);background:#F1F7FD;border-radius:0 12px 12px 0;
   padding:14px 18px;margin:10px 0;font-size:14px;}
+.notice .n-title{font-weight:700;color:var(--navy);margin:12px 0 4px;}
+.notice ul{margin:0 0 2px 4px;}
+.notice ul li{list-style:none;position:relative;padding-left:15px;margin:3px 0;}
+.notice ul li::before{content:"";position:absolute;left:0;top:.62em;
+  width:5px;height:5px;border-radius:1.5px;background:#6C93B8;}
 .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .masthead{background:linear-gradient(135deg,var(--navy-deep),var(--navy));
   color:#fff;border-radius:18px;padding:28px 36px 30px;margin-bottom:24px;
@@ -122,10 +127,13 @@ a.pill-link:hover .pill{box-shadow:0 2px 8px rgba(20,56,92,.18);}
 <div class="month-nav" id="mnav" style="display:none;"></div>
 
 <div class="card">
-<div class="notice">제출한 기록은 이 페이지에 <strong>바로</strong> 나타납니다(평가 내용 없이 제출 여부만).
-수정하려면 — <strong>전공의</strong>: 제출 확인 메일의 "응답 수정" 링크 ·
-<strong>지도전문의</strong>: 아래 수정 모드 ·
-<strong>매칭 대기 건</strong>: <strong>이어서 작성</strong> 클릭.
+<div class="notice">제출한 기록은 이 페이지에 <strong>바로</strong> 나타납니다 (평가 내용 없이 제출 여부만).
+<div class="n-title">수정 방법</div>
+<ul>
+<li><strong>전공의</strong> — 제출 확인 메일의 "응답 수정" 링크</li>
+<li><strong>지도전문의</strong> — 아래 수정 모드 켜기 (비밀번호)</li>
+<li><strong>매칭 대기 건</strong> — 목록에서 <strong>이어서 작성</strong> 클릭</li>
+</ul>
 <div class="editbar" id="editbar">
 <button id="editbtn" type="button">&#9998; 수정 모드 켜기 (지도전문의)</button>
 </div>
