@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>제출현황 확인 2026년 7월 — 신경외과 수련 로그북</title>
+<title>공순행 · 2026-07-29 척추 CT 판독 습관</title>
 <style>
 :root{
   --navy:#14385C; --navy-deep:#0E2A46; --blue:#1B6BB3; --teal:#0E7D6B; --teal-dark:#0B6A5B;
@@ -124,67 +124,75 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 .month-nav a{color:var(--blue);text-decoration:none;font-weight:600;}
 .month-nav a:hover{text-decoration:underline;}
 .month-nav .mn-cur{color:var(--muted);font-weight:700;}
-
-.ok{color:var(--teal);font-weight:700;}
-.wait{color:#B3401B;font-weight:700;}
-.row-wait td{background:#FDF6F2;}
-.pill{display:inline-block;font-size:12px;border-radius:999px;padding:2px 10px;font-weight:700;}
-.pill.done{background:#E7F4F1;color:var(--teal);}
-.pill.pending{background:#FBEAE2;color:#B3401B;}
-.notice{border-left:4px solid var(--blue);background:#F1F7FD;border-radius:0 12px 12px 0;
-  padding:14px 18px;margin:10px 0;font-size:14px;}
-.stamp{color:var(--muted);font-size:13px;}
-.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-/* 모바일: 표를 한 건 = 카드 한 장으로 재배치(가로 스크롤 없이 상태까지 보이게) */
-@media (max-width:640px){
-  .card{padding:24px 20px;}
-  .tbl-scroll table, .tbl-scroll tbody, .tbl-scroll tr, .tbl-scroll td{display:block;width:100%;}
-  .tbl-scroll thead{display:none;}
-  .tbl-scroll tr{border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:6px 14px;background:#fff;}
-  .tbl-scroll tr.row-wait{background:#FDF6F2;}
-  .tbl-scroll td{border:none;text-align:right;padding:5px 0;font-size:14px;}
-  .tbl-scroll .row-wait td{background:transparent;}
-  .tbl-scroll td::before{content:attr(data-label);float:left;color:var(--muted);font-weight:700;margin-right:12px;}
-}
-
-#content{display:block;}
 </style>
 </head>
 <body>
-<div id="content" class="wrap">
-<div class="masthead">
-<a class="mh-back" href="../index.html">&larr; 로그북 입구</a>
-<div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-<h1>제출현황 확인 — 2026년 7월 <span class="badge">아카이브</span></h1>
-<div class="mh-rule"></div>
-<div class="mh-meta">위키 반영 기준 스냅샷: 2026-07-30 10:59 · 실시간 현황·수정은 <a href="../status.html">제출현황 확인</a>에서</div>
+
+<div id="lock">
+  <div class="box">
+    <div style="font-weight:700;color:#14385C;font-size:17px;margin-bottom:4px;">면담 준비 보고서</div>
+    <div style="color:#7B8794;font-size:13px;">비밀번호를 입력하세요</div>
+    <form id="lockform">
+      <input id="pw" type="password" autocomplete="off" />
+      <div class="err" id="err"></div>
+      <button type="submit">열기</button>
+    </form>
+  </div>
 </div>
 
-<div class="card">
-<div class="notice">이 페이지는 위키에 반영된 기록 기준의 월별 스냅샷입니다.
-방금 제출한 기록은 <a href="../status.html">실시간 제출현황</a>에서 확인·수정하세요.
-이 페이지에는 평가 내용 없이 <strong>제출 여부만</strong> 표시됩니다.</div>
-<h2 style="margin-top:18px;">매칭 대기 — 자기평가·피드백 중 한쪽만 있는 건</h2>
-<ul><li><strong>이현정</strong> · 2026-07-29 · WEB embolization (WEB 기기 동맥류 색전술) (임종국) — <span class='wait'>전공의 자기평가 대기</span></li><li><strong>이현정</strong> · 2026-07-28 · aneurysmal clipping (임종국) — <span class='wait'>전공의 자기평가 대기</span></li><li><strong>이현정</strong> · 2026-07-25 · ED/IDEM tumor removal, T9-11 (김준회) — <span class='wait'>전공의 자기평가 대기</span></li><li><strong>이현정</strong> · 2026-07-24 · CAS (carotid artery stenting) (임종국) — <span class='wait'>지도전문의 피드백 대기</span></li><li><strong>이현정</strong> · 2026-07-08 · EVD bilateral (양측 뇌실외배액) (허지순) — <span class='wait'>전공의 자기평가 대기</span></li></ul>
+<div id="content" class="wrap">
+
+<div class="masthead">
+<a class="mh-back" href="../공순행.html">&larr; 공순행 보고서</a>
+<div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
+<h1>2026-07-29 · 척추 CT 판독 습관 <span class="badge">지도기록</span></h1>
+<div class="mh-rule"></div>
+<div class="mh-meta">공순행 · 지도전문의 허지순 · 면담·지도기록</div>
 </div>
 <div class="card">
-<h2>공순행</h2>
-<h3>수술·시술 기록</h3>
-<p class='empty'>반영된 수술·시술 기록이 없습니다.</p>
-<h3>주간보고</h3>
-<ul><li>2026-07-25 제출 ✓</li><li>2026-07-18 제출 ✓</li><li>2026-07-11 제출 ✓</li><li>2026-07-11 제출 ✓</li><li>2026-07-04 제출 ✓</li></ul>
-<h3>면담·지도기록</h3>
-<ul><li>2026-07-14 (허지순) 기록 ✓</li><li>2026-07-21 (임종국) 기록 ✓</li><li>2026-07-29 (김준회) 기록 ✓</li><li>2026-07-29 (허지순) 기록 ✓</li></ul>
-</div><div class="card">
-<h2>이현정</h2>
-<h3>수술·시술 기록</h3>
-<div class="tbl-scroll"><table><thead><tr><th>일자</th><th>유형</th><th>수술·시술명</th><th>지도전문의</th><th>자기평가</th><th>피드백</th><th>상태</th></tr></thead><tbody><tr class="row-wait"><td data-label="일자">2026-07-29</td><td data-label="유형">시술</td><td data-label="수술·시술명">WEB embolization (WEB 기기 동맥류 색전술)</td><td data-label="지도전문의">임종국</td><td data-label="자기평가"><span class="wait">미제출</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill pending">자기평가 대기</span></td></tr><tr class="row-wait"><td data-label="일자">2026-07-28</td><td data-label="유형">수술</td><td data-label="수술·시술명">aneurysmal clipping</td><td data-label="지도전문의">임종국</td><td data-label="자기평가"><span class="wait">미제출</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill pending">자기평가 대기</span></td></tr><tr class="row-wait"><td data-label="일자">2026-07-25</td><td data-label="유형">수술</td><td data-label="수술·시술명">ED/IDEM tumor removal, T9-11</td><td data-label="지도전문의">김준회</td><td data-label="자기평가"><span class="wait">미제출</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill pending">자기평가 대기</span></td></tr><tr class="row-wait"><td data-label="일자">2026-07-24</td><td data-label="유형">시술</td><td data-label="수술·시술명">CAS (carotid artery stenting)</td><td data-label="지도전문의">임종국</td><td data-label="자기평가"><span class="ok">제출 ✓</span></td><td data-label="피드백"><span class="wait">미제출</span></td><td data-label="상태"><span class="pill pending">피드백 대기</span></td></tr><tr><td data-label="일자">2026-07-22</td><td data-label="유형">수술</td><td data-label="수술·시술명">ACDF (anterior cervical discectomy and fusion)</td><td data-label="지도전문의">김준회</td><td data-label="자기평가"><span class="ok">제출 ✓</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill done">매칭 완료</span></td></tr><tr><td data-label="일자">2026-07-22</td><td data-label="유형">시술</td><td data-label="수술·시술명">coil embolization (paraclinoid aneurysm)</td><td data-label="지도전문의">임종국</td><td data-label="자기평가"><span class="ok">제출 ✓</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill done">매칭 완료</span></td></tr><tr><td data-label="일자">2026-07-21</td><td data-label="유형">수술</td><td data-label="수술·시술명">cranioplasty</td><td data-label="지도전문의">임종국</td><td data-label="자기평가"><span class="ok">제출 ✓</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill done">매칭 완료</span></td></tr><tr><td data-label="일자">2026-07-18</td><td data-label="유형">수술</td><td data-label="수술·시술명">VPS (ventriculoperitoneal shunt, Strata)</td><td data-label="지도전문의">정유남</td><td data-label="자기평가"><span class="ok">제출 ✓</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill done">매칭 완료</span></td></tr><tr class="row-wait"><td data-label="일자">2026-07-08</td><td data-label="유형">시술</td><td data-label="수술·시술명">EVD bilateral (양측 뇌실외배액)</td><td data-label="지도전문의">허지순</td><td data-label="자기평가"><span class="wait">미제출</span></td><td data-label="피드백"><span class="ok">제출 ✓</span></td><td data-label="상태"><span class="pill pending">자기평가 대기</span></td></tr></tbody></table></div>
-<h3>주간보고</h3>
-<ul><li>2026-07-24 제출 ✓</li></ul>
-<h3>면담·지도기록</h3>
-<p class='empty'>반영된 면담·지도기록이 없습니다.</p>
+<h2>지도내용</h2>
+<ul>
+<li>편측 다리 방사통을 호소하는 고령 환자에서 척추 CT를 시행한 경우의 판독을 지도함. bone setting만 보지 말고 soft tissue setting도 함께 확인하면 epidural root compression 평가에 도움이 되므로, 가능한 모든 영상을 참고하는 습관을 갖도록 교육함.</li>
+</ul>
+<h2>향후목표</h2>
+<ul>
+<li>(기록 없음)</li>
+</ul>
 </div>
 <div class="pagemark">수련로그.kr<span class="dot">·</span>제주대학교 신경외과 수련 로그북</div>
 </div>
+
+<script>
+const REQUIRED_HASH = "d19e26833ecb921c610d0a5951da2432bb1a0fe4628190ec7d941696eff286df";
+async function sha256(str){
+  const enc = new TextEncoder().encode(str);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function reveal(){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('content').style.display='block';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('mentoring_report_unlocked') === '1') {
+    reveal();
+    return;
+  }
+  const form = document.getElementById('lockform');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pw = document.getElementById('pw').value.normalize('NFC');
+    const h = await sha256(pw);
+    if (h === REQUIRED_HASH) {
+      sessionStorage.setItem('mentoring_report_unlocked', '1');
+      reveal();
+    } else {
+      document.getElementById('err').textContent = '비밀번호가 틀렸습니다.';
+      document.getElementById('pw').value = '';
+    }
+  });
+});
+</script>
+
 </body>
 </html>
