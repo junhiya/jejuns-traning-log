@@ -163,6 +163,11 @@ a.pill-link:hover .pill{box-shadow:0 2px 8px rgba(20,56,92,.18);}
 <script>
 const API = 'https://script.google.com/macros/s/AKfycbyLYlN3hMdVAXQgoo21NxZk-V8LHGLk5Z-UqyU6hu0IBkrCyL8t4lfP2mlrp0Awre8/exec';
 const MONTH_LABEL = m => m === '기타' ? '날짜 미상' : `${m.slice(0,4)}년 ${parseInt(m.slice(5),10)}월`;
+const _now = new Date();  // 로컬(KST) 기준 이번 달 — 기록이 없어도 항상 목록에 넣고 기본 선택
+const CUR_MONTH = `${_now.getFullYear()}-${String(_now.getMonth()+1).padStart(2,'0')}`;
+const defaultMonth = months =>
+  months.includes(CUR_MONTH) ? CUR_MONTH
+  : months.filter(m => m !== '기타').pop() || months[months.length - 1] || null;
 let DATA = null, MONTH = null, REFRESHING = false;
 
 // 마지막 성공 응답을 저장해 두고 다음 방문 때 즉시 그린다(백그라운드로 최신화) —
@@ -208,13 +213,13 @@ async function load(pw) {
   saveCache(data);
   REFRESHING = false;
   const months = allMonths();
-  if (!MONTH || !months.includes(MONTH)) MONTH = months[months.length - 1] || null;
+  if (!MONTH || !months.includes(MONTH)) MONTH = defaultMonth(months);
   render();
   return true;
 }
 
 function allMonths() {
-  const s = new Set();
+  const s = new Set([CUR_MONTH]);
   for (const r of DATA.residents)
     for (const rec of [...r.cases, ...r.weeklies, ...r.mentorings]) s.add(monthOf(rec.date));
   return [...s].sort((a, b) => (a === '기타') - (b === '기타') || a.localeCompare(b));
@@ -370,8 +375,7 @@ document.getElementById('pwform').addEventListener('submit', async e => {
   if (cached) {                             // 저장본 즉시 렌더 → 백그라운드 최신화
     DATA = cached;
     REFRESHING = true;
-    const months = allMonths();
-    MONTH = months[months.length - 1] || null;
+    MONTH = defaultMonth(allMonths());
     render();
   }
   if (savedPw) {
