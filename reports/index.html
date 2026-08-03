@@ -91,6 +91,7 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 .resident-list a:hover{transform:translateY(-2px);}
 .resident-list .name{font-size:19px;font-weight:700;color:var(--navy);}
 .resident-list .sub{font-size:13px;color:var(--muted);margin-top:2px;}
+.resident-list a.dim{opacity:.55;}
 #lock{position:fixed;inset:0;background:var(--navy-deep);display:flex;
   align-items:center;justify-content:center;z-index:10;}
 #lock .box{background:#fff;border-radius:16px;padding:36px 32px;width:min(320px,90vw);text-align:center;}
@@ -118,12 +119,14 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 .pagemark{text-align:center;color:var(--muted);font-size:11.5px;letter-spacing:2.5px;
   margin:20px 0 6px;}
 .pagemark .dot{color:var(--blue);margin:0 8px;}
-/* 월 이동 내비 — 머리띠와 첫 카드 사이 한 줄 */
-.month-nav{display:flex;justify-content:space-between;align-items:center;
+/* 월 이동 내비 — 머리띠와 첫 카드 사이 한 줄. 3칸 그리드라 선택한 달이 항상 정중앙 */
+.month-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   margin:-6px 2px 22px;font-size:14px;}
+.month-nav > *:first-child{justify-self:start;}
+.month-nav > *:last-child{justify-self:end;}
 .month-nav a{color:var(--blue);text-decoration:none;font-weight:600;}
 .month-nav a:hover{text-decoration:underline;}
-.month-nav .mn-cur{color:var(--muted);font-weight:700;}
+.month-nav .mn-cur{color:var(--navy);font-weight:700;font-size:15px;}
 </style>
 </head>
 <body>
@@ -145,19 +148,59 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="masthead">
 <a class="mh-back" href="../index.html">&larr; 로그북 입구</a>
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-<h1>면담 준비 보고서</h1>
+<h1>면담 준비 보고서 &mdash; <span id="mh-month">2026년 8월</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">기준: 2026년 8월 · 전공의를 선택하세요</div>
+<div class="mh-meta">전공의를 선택하세요 · 아래 화살표로 달을 옮길 수 있습니다</div>
 </div>
+<div class="month-nav"><a href="#" id="mn-prev">&larr; 2026년 7월</a><span class="mn-cur" id="mn-cur">2026년 8월</span><a href="#" id="mn-next" style="visibility:hidden;"></a></div>
 <div class="resident-list">
-<a href="공순행/2026-08.html">
+<a href="공순행/2026-08.html" data-name="공순행" data-months="2026-07,2026-08">
   <div class="name">공순행 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-07 ~ 2026-08) · 최신: 2026년 8월</div>
-</a><a href="이현정/2026-08.html">
+  <div class="sub">파견 (2026-07 ~ 2026-08) · <span class="r-note">2026년 8월 보고서</span></div>
+</a><a href="이현정/2026-08.html" data-name="이현정" data-months="2026-07,2026-08">
   <div class="name">이현정 <span class="badge">4년차</span></div>
-  <div class="sub">본원 · 최신: 2026년 8월</div>
+  <div class="sub">본원 · <span class="r-note">2026년 8월 보고서</span></div>
 </a>
 </div>
+<script>
+(function(){
+  var MONTHS = ["2026-07", "2026-08"];
+  var cur = "2026-08";
+  function lab(p){ var a = p.split("-"); return a[0] + "년 " + parseInt(a[1], 10) + "월"; }
+  var prevA = document.getElementById("mn-prev"),
+      nextA = document.getElementById("mn-next"),
+      curS  = document.getElementById("mn-cur");
+  function render(){
+    var i = MONTHS.indexOf(cur);
+    curS.textContent = lab(cur);
+    var mh = document.getElementById("mh-month");
+    if (mh) mh.textContent = lab(cur);
+    prevA.style.visibility = i > 0 ? "visible" : "hidden";
+    nextA.style.visibility = i < MONTHS.length - 1 ? "visible" : "hidden";
+    prevA.innerHTML = i > 0 ? "&larr; " + lab(MONTHS[i - 1]) : "";
+    nextA.innerHTML = i < MONTHS.length - 1 ? lab(MONTHS[i + 1]) + " &rarr;" : "";
+    document.querySelectorAll(".resident-list a[data-name]").forEach(function(a){
+      var ms = (a.getAttribute("data-months") || "").split(",").filter(Boolean);
+      var name = a.getAttribute("data-name");
+      var note = a.querySelector(".r-note");
+      if (ms.indexOf(cur) >= 0) {
+        a.href = encodeURIComponent(name) + "/" + cur + ".html";
+        a.classList.remove("dim");
+        note.textContent = lab(cur) + " 보고서";
+      } else if (ms.length) {
+        var last = ms[ms.length - 1];
+        a.href = encodeURIComponent(name) + "/" + last + ".html";
+        a.classList.add("dim");
+        note.textContent = lab(cur) + " 기록 없음 · 최신: " + lab(last);
+      }
+    });
+  }
+  prevA.addEventListener("click", function(e){ e.preventDefault();
+    var i = MONTHS.indexOf(cur); if (i > 0) { cur = MONTHS[i - 1]; render(); } });
+  nextA.addEventListener("click", function(e){ e.preventDefault();
+    var i = MONTHS.indexOf(cur); if (i < MONTHS.length - 1) { cur = MONTHS[i + 1]; render(); } });
+})();
+</script>
 <div class="pagemark">수련로그.kr<span class="dot">·</span>제주대학교 신경외과 수련 로그북</div>
 </div>
 
