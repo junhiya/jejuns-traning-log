@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>면담 준비 보고서</title>
+<title>이현정 — 2026년 9월 면담 준비 보고서</title>
 <style>
 :root{
   --navy:#14385C; --navy-deep:#0E2A46; --blue:#1B6BB3; --teal:#0E7D6B; --teal-dark:#0B6A5B;
@@ -146,67 +146,72 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div id="content" class="wrap">
 
 <div class="masthead">
-<a class="mh-back" href="../index.html">&larr; 로그북 입구</a>
+<a class="mh-back" href="../index.html">&larr; 전공의 목록</a>
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-<h1>면담 준비 보고서 &mdash; <span id="mh-month">2026년 9월</span></h1>
+<h1>이현정 — 2026년 9월 <span class="badge">4년차</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">전공의를 선택하세요 · 아래 화살표로 달을 옮길 수 있습니다</div>
+<div class="mh-meta">본원 · 면담 준비 보고서 · 생성 2026-09-04 14:00</div>
 </div>
-<div class="month-nav"><a href="#" id="mn-prev">&larr; 2026년 8월</a><span class="mn-cur" id="mn-cur">2026년 9월</span><a href="#" id="mn-next" style="visibility:hidden;"></a></div>
-<div class="resident-list">
-<a href="공순행/2026-08.html" class="dim" data-name="공순행" data-months="2026-07,2026-08">
-  <div class="name">공순행 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-07 ~ 2026-08) · <span class="r-note">2026년 9월 기록 없음 · 최신: 2026년 8월</span></div>
-</a><a href="이현정/2026-09.html" data-name="이현정" data-months="2026-07,2026-08,2026-09">
-  <div class="name">이현정 <span class="badge">4년차</span></div>
-  <div class="sub">본원 · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="이민지/2026-09.html" data-name="이민지" data-months="2026-09">
-  <div class="name">이민지 <span class="badge">2년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-11) · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="황재승/2026-09.html" data-name="황재승" data-months="2026-09">
-  <div class="name">황재승 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-10) · <span class="r-note">2026년 9월 보고서</span></div>
-</a>
+<div class="month-nav"><a href="2026-08.html">&larr; 2026년 8월</a><span class="mn-cur">2026년 9월</span><span></span></div>
+<div class="card">
+<h2>케이스 현황</h2>
+<ul>
+<li class="li2"><span class="li-head"><span class="c-date">2026-09-02</span><span class="c-name">WEB embolization</span><span class="badge">시술</span><span class="c-meta">뇌혈관 · 임종국</span><a href="2026-09-02_시술_WEB-embolization.html">원문 ↗</a></span><span class="li-body">피드백 7항목 전부 보통, 자유 코멘트는 <strong>&quot;aneurysm의 크기와 device 선택&quot;</strong> — 07-29 WEB &quot;anatomy 미숙&quot; 이후 두 번째 WEB으로, 지적이 해부에서 device 선택 논리로 옮겨 갔다(같은 건에 파견 이민지 피드백도 별도 제출). <strong>전공의 자기평가 미제출.</strong></span></li>
+</ul>
+<h2>주간보고 현황</h2>
+<ul>
+<li>주간보고 없음</li>
+</ul>
 </div>
-<script>
-(function(){
-  var MONTHS = ["2026-07", "2026-08", "2026-09"];
-  var cur = "2026-09";
-  function lab(p){ var a = p.split("-"); return a[0] + "년 " + parseInt(a[1], 10) + "월"; }
-  var prevA = document.getElementById("mn-prev"),
-      nextA = document.getElementById("mn-next"),
-      curS  = document.getElementById("mn-cur");
-  function render(){
-    var i = MONTHS.indexOf(cur);
-    curS.textContent = lab(cur);
-    var mh = document.getElementById("mh-month");
-    if (mh) mh.textContent = lab(cur);
-    prevA.style.visibility = i > 0 ? "visible" : "hidden";
-    nextA.style.visibility = i < MONTHS.length - 1 ? "visible" : "hidden";
-    prevA.innerHTML = i > 0 ? "&larr; " + lab(MONTHS[i - 1]) : "";
-    nextA.innerHTML = i < MONTHS.length - 1 ? lab(MONTHS[i + 1]) + " &rarr;" : "";
-    document.querySelectorAll(".resident-list a[data-name]").forEach(function(a){
-      var ms = (a.getAttribute("data-months") || "").split(",").filter(Boolean);
-      var name = a.getAttribute("data-name");
-      var note = a.querySelector(".r-note");
-      if (ms.indexOf(cur) >= 0) {
-        a.href = encodeURIComponent(name) + "/" + cur + ".html";
-        a.classList.remove("dim");
-        note.textContent = lab(cur) + " 보고서";
-      } else if (ms.length) {
-        var last = ms[ms.length - 1];
-        a.href = encodeURIComponent(name) + "/" + last + ".html";
-        a.classList.add("dim");
-        note.textContent = lab(cur) + " 기록 없음 · 최신: " + lab(last);
-      }
-    });
-  }
-  prevA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i > 0) { cur = MONTHS[i - 1]; render(); } });
-  nextA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i < MONTHS.length - 1) { cur = MONTHS[i + 1]; render(); } });
-})();
-</script>
+<div class="card">
+<h2>면담 및 지도이력</h2>
+<ul>
+<li>면담 기록 없음</li>
+</ul>
+</div>
+<div class="card">
+<h2>누적 (전 기간)</h2>
+<h3>EPA 도달 현황 (연차 목표 대비)</h3>
+<ul>
+<li>뇌혈관: 개두술 L3(cranioplasty 감독 하 집도) · clipping L2(보조 — 08-04 자기평가로 확인) · 중재시술 L2(보조 — coil 07-31, 같은 날 Perclose 직접 시행) · WEB 2건(07-29 L1 관찰 · 09-02 자기평가 미제출로 레벨 미상) · 진단 혈관조영 TFCA 3건(08-07·08-14·08-28 — 셋 다 자기평가 미제출로 레벨 미상) — 개두는 4년차 궤도, 중재는 관찰(07-22 L1)→보조(07-31 L2)로 진입했으나 8~9월 중재·혈관조영 4건은 전부 자기평가가 없어 레벨 추적이 끊김</li>
+<li>척추: ACDF L2(보조) · 척수 종양 IDEM removal L2(보조) · 감염(T9 epidural abscess) L2(보조) · 전방 재건(L3 corpectomy 08-06) L2(보조) · 요추 감압(ULBD 08-12 — 자기평가 미제출로 레벨 미상) · 요추 유합(TLIF L3-5 08-20) L2(보조)</li>
+<li>소아: VPS L2(보조)</li>
+<li>션트(수두증): VP shunt 3건 — 07-18 소아 VPS L2(보조) · 08-11(자기평가 미제출로 레벨 미상) · 08-21 VP shunt removal &amp; EVD(소아 감염 건) <strong>L4(최소 감독)</strong></li>
+<li>외상: Burr hole &amp; SDH removal L2(보조 — 07-29, 08-03 2건) · 08-30 burr hole·08-31 craniotomy &amp; SDH removal(둘 다 자기평가 미제출로 분과·레벨 미상 — 외상 개연성. 08-31은 피드백 전항목 <span class="sym-up">▲</span>)</li>
+<li>기본 술기: EVD — 07-08 bilateral L2(보조) → 08-21·08-23 단독 <strong>L5(독립 집도)</strong> ×2. 단 두 건 모두 수술 후 영상에서 catheter malposition(후방 trajectory·과도한 깊이) 확인 — trajectory 정확도가 과제</li>
+<li>종양: 08-18 tumor removal 1건(부위·분과 미상, 자기평가 미제출로 레벨 미상) — 두개강 내 여부 미확인</li>
+</ul>
+<h3>경험 분포 (분과별 누적)</h3>
+<ul>
+<li>뇌혈관 11 · 척추 6 · 외상 2 · 소아 2 · 기타(EVD) 3 · 미상(08-11 VP shunt · 08-18 tumor removal · 08-30 burr hole · 08-31 craniotomy &amp; SDH removal — 자기평가 미제출로 잠정) 4 · 종양 0 — 총 28건(7월 12 · 8월 15 · 9월 1). 뇌혈관 편중(중재·혈관조영 8건: coil ×2 · CAS · WEB ×2 · TFCA ×3 / clipping 3건)이 더 짙어졌고, 척추는 경추·흉추·요추와 재건·감압·유합이 모두 채워짐. 8월 마지막 주 이후 4건(08-28·08-30·08-31·09-02)은 전부 피드백만 있어 분과·레벨 확정은 자기평가 대기</li>
+</ul>
+<h3>반복 성장 과제</h3>
+<ul>
+<li><strong>술 전 준비(영상 분석·예습) 루틴</strong> — 7월 소급 자기평가 7건과 08-04·08-06의 계획·사전 숙지·해부·술기 <span class="sym-dn">▼</span> 자평으로 인식은 완성, 08-30 burr hole &quot;surgical plan&quot;(임종국)으로 월말에 지도전문의 쪽에서도 재지적 — 케이스 전 실행 루틴이 과제</li>
+<li><strong>해부(anatomy) → 기구 조작으로 초점이 좁혀진 시술 축</strong> — 07-29 WEB &quot;anatomy 미숙&quot; → 08-07 TFCA &quot;aortic arch anatomy 미흡&quot; → 08-14 &quot;TFCA 술기 미숙&quot; → 08-18 tumor removal &quot;surgical anatomy 미흡&quot; → 08-28 TFCA &quot;catherter 조작 미흡&quot; → 09-02 WEB &quot;aneurysm의 크기와 device 선택&quot;(모두 임종국). TFCA 3회 연속, WEB 2회째</li>
+<li><strong>세밀 조작(suction·drain·drilling)</strong> — 08-06·08-20 suction·drain tagging(김준회), 08-31 craniotomy 전항목 <span class="sym-up">▲</span>에 &quot;drilling technique&quot;(임종국). 준비·세팅·개두 기본은 08-12 ULBD·08-20 TLIF·08-31에서 인정 신호</li>
+<li><strong>EVD trajectory</strong> — 08-21(후방 거치, &quot;tragectory 미흡&quot;)·08-23(과도한 깊이) L5 독립 시행 2건 연속 malposition. 자기성찰은 구체적, 다음 EVD에서 영상 검토→trajectory 계획→삽입 후 확인 루틴 검증 필요</li>
+<li><strong>수술·시술 순서(op sequence) 이해</strong> — 7월 최상위 과제, 8월 재지적 없음. 08-03 면담의 clipping <strong>발표</strong> 과제 이행 여부 확인 필요</li>
+</ul>
+</div>
+<div class="card">
+<h2>AI 분석 및 제안</h2>
+<div class="ai">
+<h3>읽히는 패턴</h3>
+<ul>
+<li><strong>9월 첫 기록도 피드백만이다.</strong> 09-02 WEB embolization은 자기평가 없이 임종국 교수 피드백만 — 08-28부터 4건 연속 같은 양상으로, 자기평가 미제출은 9건(08-07·08-14·08-28 TFCA · 08-11 VP shunt · 08-12 ULBD · 08-18 tumor removal · 08-30 burr hole · 08-31 craniotomy · 09-02 WEB), 주간보고는 7월 24일 이후 없다. 8~9월 중재·혈관조영 4건의 EPA 레벨을 하나도 매길 수 없는 상태다.</li>
+<li><strong>시술 지적이 해부에서 &#x27;선택과 조작&#x27;으로 옮겨 갔다.</strong> 07-29 WEB &quot;anatomy 미숙&quot;이 09-02 WEB에서는 &quot;aneurysm의 크기와 device 선택&quot;으로, TFCA는 &quot;catherter 조작 미흡&quot;(08-28)으로 — 해부 지적은 줄고 device 선택 논리·catheter 핸들링이 과제로 남았다. 같은 건에서 파견 이민지가 받은 &quot;device information&quot;과 짝을 이룬다.</li>
+<li><strong>면담 공백이 한 달을 넘겼다.</strong> 마지막 지도기록 08-03(임종국) 이후 면담이 없어 9월분 별지 8-1호 근거가 아직 없고, 08-03 면담의 clipping 발표 과제도 이행 확인이 안 됐다.</li>
+</ul>
+<h3>제안</h3>
+<ul>
+<li><strong>9월 첫 면담을 서둘러 잡고 의제를 &#x27;catheter·device 복기&#x27;로 묶는다</strong> — 08-21·08-23 EVD 수술 후 CT, 08-28 TFCA, 07-29·09-02 WEB 두 건의 device 선택 근거를 한 자리에서 복기하면 임종국 교수의 시술 축 지적을 종합 점검할 수 있다. clipping 발표 과제 재평가와 별지 8-1호 9월분 근거 확보를 겸한다.</li>
+<li><strong>자기평가 9건을 status 페이지 &quot;이어서 작성&quot; 링크로 일괄 독려</strong> — 특히 08-30·08-31·09-02는 분과·레벨이 비어 있어 3분기 역량평가(9월 말 첫 작성) 누적표에 구멍이 된다.</li>
+<li><strong>3분기 역량평가 초안 준비</strong> — 7~9월 누적(개두 L3·EVD L5·중재 L2, 반복 과제 5축)을 이 파일 누적 칸 기준으로 9월 말에 정리한다.</li>
+</ul>
+</div>
+<div class="ai-note">Claude가 raw 기록·면담 기록을 근거로 작성한 참고 의견입니다 · 갱신 2026-09-04. 판단은 지도전문의가 합니다.</div>
+</div>
 <div class="pagemark">수련로그.kr<span class="dot">·</span>제주대학교 신경외과 수련 로그북</div>
 </div>
 

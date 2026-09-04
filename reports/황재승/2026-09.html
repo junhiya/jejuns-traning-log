@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>면담 준비 보고서</title>
+<title>황재승 — 2026년 9월 면담 준비 보고서</title>
 <style>
 :root{
   --navy:#14385C; --navy-deep:#0E2A46; --blue:#1B6BB3; --teal:#0E7D6B; --teal-dark:#0B6A5B;
@@ -146,67 +146,59 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div id="content" class="wrap">
 
 <div class="masthead">
-<a class="mh-back" href="../index.html">&larr; 로그북 입구</a>
+<a class="mh-back" href="../index.html">&larr; 전공의 목록</a>
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-<h1>면담 준비 보고서 &mdash; <span id="mh-month">2026년 9월</span></h1>
+<h1>황재승 — 2026년 9월 <span class="badge">1년차</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">전공의를 선택하세요 · 아래 화살표로 달을 옮길 수 있습니다</div>
+<div class="mh-meta">파견 (2026-09 ~ 2026-10) · 면담 준비 보고서 · 생성 2026-09-04 14:00</div>
 </div>
-<div class="month-nav"><a href="#" id="mn-prev">&larr; 2026년 8월</a><span class="mn-cur" id="mn-cur">2026년 9월</span><a href="#" id="mn-next" style="visibility:hidden;"></a></div>
-<div class="resident-list">
-<a href="공순행/2026-08.html" class="dim" data-name="공순행" data-months="2026-07,2026-08">
-  <div class="name">공순행 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-07 ~ 2026-08) · <span class="r-note">2026년 9월 기록 없음 · 최신: 2026년 8월</span></div>
-</a><a href="이현정/2026-09.html" data-name="이현정" data-months="2026-07,2026-08,2026-09">
-  <div class="name">이현정 <span class="badge">4년차</span></div>
-  <div class="sub">본원 · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="이민지/2026-09.html" data-name="이민지" data-months="2026-09">
-  <div class="name">이민지 <span class="badge">2년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-11) · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="황재승/2026-09.html" data-name="황재승" data-months="2026-09">
-  <div class="name">황재승 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-10) · <span class="r-note">2026년 9월 보고서</span></div>
-</a>
+
+<div class="card">
+<h2>케이스 현황</h2>
+<ul>
+<li>케이스 입력 없음</li>
+</ul>
+<h2>주간보고 현황</h2>
+<ul>
+<li>주간보고 없음</li>
+</ul>
 </div>
-<script>
-(function(){
-  var MONTHS = ["2026-07", "2026-08", "2026-09"];
-  var cur = "2026-09";
-  function lab(p){ var a = p.split("-"); return a[0] + "년 " + parseInt(a[1], 10) + "월"; }
-  var prevA = document.getElementById("mn-prev"),
-      nextA = document.getElementById("mn-next"),
-      curS  = document.getElementById("mn-cur");
-  function render(){
-    var i = MONTHS.indexOf(cur);
-    curS.textContent = lab(cur);
-    var mh = document.getElementById("mh-month");
-    if (mh) mh.textContent = lab(cur);
-    prevA.style.visibility = i > 0 ? "visible" : "hidden";
-    nextA.style.visibility = i < MONTHS.length - 1 ? "visible" : "hidden";
-    prevA.innerHTML = i > 0 ? "&larr; " + lab(MONTHS[i - 1]) : "";
-    nextA.innerHTML = i < MONTHS.length - 1 ? lab(MONTHS[i + 1]) + " &rarr;" : "";
-    document.querySelectorAll(".resident-list a[data-name]").forEach(function(a){
-      var ms = (a.getAttribute("data-months") || "").split(",").filter(Boolean);
-      var name = a.getAttribute("data-name");
-      var note = a.querySelector(".r-note");
-      if (ms.indexOf(cur) >= 0) {
-        a.href = encodeURIComponent(name) + "/" + cur + ".html";
-        a.classList.remove("dim");
-        note.textContent = lab(cur) + " 보고서";
-      } else if (ms.length) {
-        var last = ms[ms.length - 1];
-        a.href = encodeURIComponent(name) + "/" + last + ".html";
-        a.classList.add("dim");
-        note.textContent = lab(cur) + " 기록 없음 · 최신: " + lab(last);
-      }
-    });
-  }
-  prevA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i > 0) { cur = MONTHS[i - 1]; render(); } });
-  nextA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i < MONTHS.length - 1) { cur = MONTHS[i + 1]; render(); } });
-})();
-</script>
+<div class="card">
+<h2>면담 및 지도이력</h2>
+<ul>
+<li>면담 기록 없음</li>
+</ul>
+</div>
+<div class="card">
+<h2>누적 (전 기간)</h2>
+<h3>EPA 도달 현황 (연차 목표 대비)</h3>
+<ul>
+<li>기록 없음 — EPA 미산정</li>
+</ul>
+<h3>경험 분포 (분과별 누적)</h3>
+<ul>
+<li>케이스 0 · 주간보고 0 · 지도기록 0</li>
+</ul>
+<h3>반복 성장 과제</h3>
+<ul>
+<li>기록 없음</li>
+</ul>
+</div>
+<div class="card">
+<h2>AI 분석 및 제안</h2>
+<div class="ai">
+<h3>읽히는 패턴</h3>
+<ul>
+<li>파견 첫 주, 폼 제출이 아직 한 건도 없다 — 직전 R1 파견(공순행)은 주간보고는 첫 주부터 냈으나 케이스 입력은 7주 뒤에야 시작됐다.</li>
+</ul>
+<h3>제안</h3>
+<ul>
+<li><strong>첫 주 안에 폼 3종(케이스·주간보고·면담) 안내와 주간보고 주 1회 약속</strong> — 1년차는 EVD 등 기본 술기 노출이 곧 시작되므로 케이스 폼도 처음부터 습관화한다.</li>
+<li><strong>9월 중 첫 면담</strong>으로 파견 2개월 목표를 정하고 별지 8-1호 9월분 근거를 확보한다.</li>
+</ul>
+</div>
+<div class="ai-note">Claude가 raw 기록·면담 기록을 근거로 작성한 참고 의견입니다 · 갱신 2026-09-04. 판단은 지도전문의가 합니다.</div>
+</div>
 <div class="pagemark">수련로그.kr<span class="dot">·</span>제주대학교 신경외과 수련 로그북</div>
 </div>
 

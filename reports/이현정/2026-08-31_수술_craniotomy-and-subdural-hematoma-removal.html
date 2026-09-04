@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>면담 준비 보고서</title>
+<title>이현정 · 2026-08-31 craniotomy and subdural hematoma removal</title>
 <style>
 :root{
   --navy:#14385C; --navy-deep:#0E2A46; --blue:#1B6BB3; --teal:#0E7D6B; --teal-dark:#0B6A5B;
@@ -146,67 +146,33 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div id="content" class="wrap">
 
 <div class="masthead">
-<a class="mh-back" href="../index.html">&larr; 로그북 입구</a>
+<a class="mh-back" href="../이현정.html">&larr; 이현정 보고서</a>
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
-<h1>면담 준비 보고서 &mdash; <span id="mh-month">2026년 9월</span></h1>
+<h1>2026-08-31 · craniotomy and subdural hematoma removal <span class="badge">수술</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">전공의를 선택하세요 · 아래 화살표로 달을 옮길 수 있습니다</div>
+<div class="mh-meta">이현정 · 지도전문의 임종국 · 분과 미상 (전공의 자기평가 미제출 — 외상 개연성) · 미상 (전공의 자기평가 미제출)</div>
 </div>
-<div class="month-nav"><a href="#" id="mn-prev">&larr; 2026년 8월</a><span class="mn-cur" id="mn-cur">2026년 9월</span><a href="#" id="mn-next" style="visibility:hidden;"></a></div>
-<div class="resident-list">
-<a href="공순행/2026-08.html" class="dim" data-name="공순행" data-months="2026-07,2026-08">
-  <div class="name">공순행 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-07 ~ 2026-08) · <span class="r-note">2026년 9월 기록 없음 · 최신: 2026년 8월</span></div>
-</a><a href="이현정/2026-09.html" data-name="이현정" data-months="2026-07,2026-08,2026-09">
-  <div class="name">이현정 <span class="badge">4년차</span></div>
-  <div class="sub">본원 · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="이민지/2026-09.html" data-name="이민지" data-months="2026-09">
-  <div class="name">이민지 <span class="badge">2년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-11) · <span class="r-note">2026년 9월 보고서</span></div>
-</a><a href="황재승/2026-09.html" data-name="황재승" data-months="2026-09">
-  <div class="name">황재승 <span class="badge">1년차</span></div>
-  <div class="sub">파견 (2026-09 ~ 2026-10) · <span class="r-note">2026년 9월 보고서</span></div>
-</a>
+<div class="card">
+<p>평가 기호: <span class="sym-up">▲</span> 잘함 / - 보통 / <span class="sym-dn">▼</span> 보완 필요. 전공의 자기평가 미제출(지도전문의 피드백만 있음). 피드백 폼 제출 08-31.</p>
+<h2>평가 (자기평가 · 피드백)</h2>
+<table><thead><tr>
+<th>항목</th>
+<th>자기평가</th>
+<th>피드백</th>
+</tr></thead><tbody>
+<tr><td>환자 상태 파악</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>수술 전 계획</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>수술 사전 숙지</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>해부학적 구조 파악</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>술기 수행</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>의사소통·팀워크</td><td></td><td><span class="sym-up">▲</span></td></tr>
+<tr><td>환자 안전 관리</td><td></td><td><span class="sym-up">▲</span></td></tr>
+</tbody></table>
+<ul>
+<li>자기성찰(전공의): 미제출</li>
+<li>피드백 자유 입력(임종국): drilling technique</li>
+</ul>
 </div>
-<script>
-(function(){
-  var MONTHS = ["2026-07", "2026-08", "2026-09"];
-  var cur = "2026-09";
-  function lab(p){ var a = p.split("-"); return a[0] + "년 " + parseInt(a[1], 10) + "월"; }
-  var prevA = document.getElementById("mn-prev"),
-      nextA = document.getElementById("mn-next"),
-      curS  = document.getElementById("mn-cur");
-  function render(){
-    var i = MONTHS.indexOf(cur);
-    curS.textContent = lab(cur);
-    var mh = document.getElementById("mh-month");
-    if (mh) mh.textContent = lab(cur);
-    prevA.style.visibility = i > 0 ? "visible" : "hidden";
-    nextA.style.visibility = i < MONTHS.length - 1 ? "visible" : "hidden";
-    prevA.innerHTML = i > 0 ? "&larr; " + lab(MONTHS[i - 1]) : "";
-    nextA.innerHTML = i < MONTHS.length - 1 ? lab(MONTHS[i + 1]) + " &rarr;" : "";
-    document.querySelectorAll(".resident-list a[data-name]").forEach(function(a){
-      var ms = (a.getAttribute("data-months") || "").split(",").filter(Boolean);
-      var name = a.getAttribute("data-name");
-      var note = a.querySelector(".r-note");
-      if (ms.indexOf(cur) >= 0) {
-        a.href = encodeURIComponent(name) + "/" + cur + ".html";
-        a.classList.remove("dim");
-        note.textContent = lab(cur) + " 보고서";
-      } else if (ms.length) {
-        var last = ms[ms.length - 1];
-        a.href = encodeURIComponent(name) + "/" + last + ".html";
-        a.classList.add("dim");
-        note.textContent = lab(cur) + " 기록 없음 · 최신: " + lab(last);
-      }
-    });
-  }
-  prevA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i > 0) { cur = MONTHS[i - 1]; render(); } });
-  nextA.addEventListener("click", function(e){ e.preventDefault();
-    var i = MONTHS.indexOf(cur); if (i < MONTHS.length - 1) { cur = MONTHS[i + 1]; render(); } });
-})();
-</script>
 <div class="pagemark">수련로그.kr<span class="dot">·</span>제주대학교 신경외과 수련 로그북</div>
 </div>
 
