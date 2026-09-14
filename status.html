@@ -172,6 +172,18 @@ const defaultMonth = months =>
   : months.filter(m => m !== '기타').pop() || months[months.length - 1] || null;
 let DATA = null, MONTH = null, REFRESHING = false;
 
+// 전공의 명단(재직·파견 기간, 월 단위 포함). 시트 응답만으로는 "아직 제출이 없는 새 전공의"가
+// 안 보이고 "파견이 끝난 전공의"가 계속 남으므로, 달마다 이 명단을 기준으로 카드를 만든다.
+// 명단에 없는 이름이라도 그 달에 제출 기록이 있으면(오타 이름 등) 카드는 그대로 나온다.
+// 새 전공의가 오거나 나가면 여기만 고친다. to를 비우면 현재 재직 중.
+const ROSTER = [
+  { name: '이현정', from: '2026-07', to: '' },
+  { name: '공순행', from: '2026-07', to: '2026-08' },   // 파견 종료
+  { name: '이민지', from: '2026-09', to: '2026-11' },   // 파견 R2
+  { name: '황재승', from: '2026-09', to: '2026-10' },   // 파견 R1
+];
+const activeIn = (r, m) => m !== '기타' && r.from <= m && (!r.to || m <= r.to);
+
 // 마지막 성공 응답을 저장해 두고 다음 방문 때 즉시 그린다(백그라운드로 최신화) —
 // 웹앱 왕복(수 초)을 기다리지 않게 하는 체감 속도 장치. 링크(수정·프리필)는 불변이라 안전.
 function saveCache(data) {
@@ -292,9 +304,16 @@ function render() {
     ? `<ul>${pend.join('')}</ul>`
     : `<p class="empty">매칭 대기 중인 건이 없습니다. 모든 수술·시술 기록에 자기평가와 피드백이 갖춰졌습니다.</p>`;
 
-  // 전공의별 카드
-  let html = '';
+  // 전공의별 카드 — 이 달 재직 명단(ROSTER) 순서로 먼저, 명단 밖이라도 이 달 기록이 있으면 뒤에 덧붙인다
+  const byName = new Map(DATA.residents.map(r => [r.name.normalize('NFC'), r]));
+  const empty = name => ({ name, cases: [], weeklies: [], mentorings: [] });
+  const shown = ROSTER.filter(r => activeIn(r, MONTH)).map(r => byName.get(r.name) || empty(r.name));
   for (const r of DATA.residents) {
+    if (shown.includes(r)) continue;
+    if ([...r.cases, ...r.weeklies, ...r.mentorings].some(inMonth)) shown.push(r);
+  }
+  let html = '';
+  for (const r of shown) {
     const cases = r.cases.filter(inMonth), weeklies = r.weeklies.filter(inMonth),
           mentorings = r.mentorings.filter(inMonth);
     let caseHtml;
