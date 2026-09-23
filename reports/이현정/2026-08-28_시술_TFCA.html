@@ -34,6 +34,10 @@ table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:14px;}
 th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;}
 th{background:var(--bg);color:var(--navy);font-weight:700;}
 td:first-child, th:first-child{text-align:left;}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0 6px;}
+.tbl table{margin:0;}
+@media (max-width:600px){.tbl table{font-size:13px;} .tbl th,.tbl td{padding:6px 8px;}}
+td.al,th.al{text-align:left;} td.ac,th.ac{text-align:center;white-space:nowrap;} td.ar,th.ar{text-align:right;}
 ul{margin:6px 0 6px 20px;}
 li{margin:4px 0;}
 /* 불릿을 동그라미(•) 대신 작은 둥근 사각형으로 — 제목의 세로 액센트 바와 같은 조형 언어로 통일.
@@ -155,19 +159,19 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="card">
 <p>평가 기호: <span class="sym-up">▲</span> 잘함 / - 보통 / <span class="sym-dn">▼</span> 보완 필요. 전공의 자기평가 미제출(지도전문의 피드백만 있음). 피드백 폼 제출 08-29.</p>
 <h2>평가 (자기평가 · 피드백)</h2>
-<table><thead><tr>
-<th>항목</th>
-<th>자기평가</th>
-<th>피드백</th>
+<div class="tbl"><table><thead><tr>
+<th class="al">항목</th>
+<th class="ac">자기평가</th>
+<th class="ac">피드백</th>
 </tr></thead><tbody>
-<tr><td>환자 상태 파악</td><td></td><td>-</td></tr>
-<tr><td>수술 전 계획</td><td></td><td>-</td></tr>
-<tr><td>수술 사전 숙지</td><td></td><td>-</td></tr>
-<tr><td>해부학적 구조 파악</td><td></td><td>-</td></tr>
-<tr><td>술기 수행</td><td></td><td>-</td></tr>
-<tr><td>의사소통·팀워크</td><td></td><td>-</td></tr>
-<tr><td>환자 안전 관리</td><td></td><td>-</td></tr>
-</tbody></table>
+<tr><td class="al">환자 상태 파악</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">수술 전 계획</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">수술 사전 숙지</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">해부학적 구조 파악</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">술기 수행</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">의사소통·팀워크</td><td class="ac"></td><td class="ac">-</td></tr>
+<tr><td class="al">환자 안전 관리</td><td class="ac"></td><td class="ac">-</td></tr>
+</tbody></table></div>
 <ul>
 <li>자기성찰(전공의): 미제출</li>
 <li>피드백 자유 입력(임종국): catherter 조작 미흡</li>

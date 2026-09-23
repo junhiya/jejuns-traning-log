@@ -34,6 +34,10 @@ table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:14px;}
 th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;}
 th{background:var(--bg);color:var(--navy);font-weight:700;}
 td:first-child, th:first-child{text-align:left;}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0 6px;}
+.tbl table{margin:0;}
+@media (max-width:600px){.tbl table{font-size:13px;} .tbl th,.tbl td{padding:6px 8px;}}
+td.al,th.al{text-align:left;} td.ac,th.ac{text-align:center;white-space:nowrap;} td.ar,th.ar{text-align:right;}
 ul{margin:6px 0 6px 20px;}
 li{margin:4px 0;}
 /* 불릿을 동그라미(•) 대신 작은 둥근 사각형으로 — 제목의 세로 액센트 바와 같은 조형 언어로 통일.
@@ -150,7 +154,7 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="mh-eyebrow">JEJU NATIONAL UNIVERSITY HOSPITAL</div>
 <h1>이현정 — 2026년 9월 <span class="badge">4년차</span></h1>
 <div class="mh-rule"></div>
-<div class="mh-meta">본원 · 면담 준비 보고서 · 생성 2026-09-23 14:27</div>
+<div class="mh-meta">본원 · 면담 준비 보고서 · 생성 2026-09-23 14:54</div>
 </div>
 <div class="month-nav"><a href="2026-08.html">&larr; 2026년 8월</a><span class="mn-cur">2026년 9월</span><span></span></div>
 <div class="card">
@@ -182,30 +186,52 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="card">
 <h2>누적 (전 기간)</h2>
 <h3>EPA 도달 현황 (연차 목표 대비)</h3>
+<div class="tbl"><table><thead><tr>
+<th class="al">술기군</th>
+<th class="ac">최고 레벨</th>
+<th class="al">근거 케이스</th>
+<th class="al">비고</th>
+</tr></thead><tbody>
+<tr><td class="al">개두 (외상 SDH)</td><td class="ac"><strong>L4</strong> 최소 감독</td><td class="al">08-31 craniotomy &amp; SDH removal</td><td class="al">피드백 전항목 <span class="sym-up">▲</span>. burr hole &amp; SDH removal은 L2 ×2 (07-29 · 08-03)</td></tr>
+<tr><td class="al">개두 (두개성형 · EDH)</td><td class="ac">L3 감독 하 집도</td><td class="al">07-21 cranioplasty · 09-22 revision &amp; EDH removal</td><td class="al">09-22는 해부 · 술기 <span class="sym-dn">▼</span> 자평, 피드백 미제출</td></tr>
+<tr><td class="al">동맥류 clipping</td><td class="ac">L2 보조</td><td class="al">07-28 · 08-04</td><td class="al">09-08 clip은 자기평가 미제출로 미상</td></tr>
+<tr><td class="al">뇌혈관 중재시술</td><td class="ac">L2 보조</td><td class="al">07-31 coil (같은 날 Perclose 직접 시행)</td><td class="al">07-22 coil · 07-24 CAS · 07-29 WEB은 L1 관찰, 09-02 WEB 미상</td></tr>
+<tr><td class="al">진단 혈관조영 (TFCA)</td><td class="ac">미상</td><td class="al">6건 (08-07 · 08-14 · 08-28 · 09-11 · 09-15 · 09-23)</td><td class="al">전부 자기평가 미제출 — 레벨 추적 불가</td></tr>
+<tr><td class="al">척추</td><td class="ac">L2 보조</td><td class="al">ACDF · IDEM removal · T9 abscess · L3 corpectomy · TLIF</td><td class="al">경추~요추, 감압 · 재건 · 유합 경험. 08-12 ULBD는 미상</td></tr>
+<tr><td class="al">션트 (VP shunt)</td><td class="ac"><strong>L4</strong> 최소 감독</td><td class="al">08-21 VP shunt removal &amp; EVD (소아)</td><td class="al">07-18 VPS L2, 08-11 VP shunt 미상</td></tr>
+<tr><td class="al">EVD</td><td class="ac"><strong>L5</strong> 독립 집도</td><td class="al">08-21 · 08-23</td><td class="al">2건 모두 술후 영상에서 catheter malposition</td></tr>
+<tr><td class="al">Tracheostomy</td><td class="ac"><strong>L5</strong> 독립 집도</td><td class="al">08-31</td><td class="al">exposure 확보 <span class="sym-dn">▼</span> 자평, 피드백 미제출</td></tr>
+<tr><td class="al">종양 (두개강 내)</td><td class="ac">미상</td><td class="al">08-18 tumor removal 1건</td><td class="al">부위 · 분과 · 레벨 미확인</td></tr>
+</tbody></table></div>
 <ul>
-<li>뇌혈관: 개두술 L3(cranioplasty 감독 하 집도) · clipping L2(보조 — 08-04 자기평가로 확인) · 09-08 aneurysm clip(자기평가 미제출로 레벨 미상) · 중재시술 L2(보조 — coil 07-31, 같은 날 Perclose 직접 시행) · WEB 2건(07-29 L1 관찰 · 09-02 자기평가 미제출로 레벨 미상) · 진단 혈관조영 TFCA 6건(08-07·08-14·08-28·09-11·09-15·09-23 — 모두 자기평가 미제출로 레벨 미상; 09-15는 사용자 명칭 정정 반영) — 개두는 4년차 궤도, 중재는 관찰(07-22 L1)→보조(07-31 L2)로 진입했으나 8~9월 중재·혈관조영 7건과 9월 clip은 전부 자기평가가 없어 레벨 추적이 끊김</li>
-<li>척추: ACDF L2(보조) · 척수 종양 IDEM removal L2(보조) · 감염(T9 epidural abscess) L2(보조) · 전방 재건(L3 corpectomy 08-06) L2(보조) · 요추 감압(ULBD 08-12 — 자기평가 미제출로 레벨 미상) · 요추 유합(TLIF L3-5 08-20) L2(보조)</li>
-<li>소아: VPS L2(보조)</li>
-<li>션트(수두증): VP shunt 3건 — 07-18 소아 VPS L2(보조) · 08-11(자기평가 미제출로 레벨 미상) · 08-21 VP shunt removal &amp; EVD(소아 감염 건) <strong>L4(최소 감독)</strong></li>
-<li>외상: 09-22 Revision of cranioplasty &amp; removal of EDH <strong>L3(감독 하 집도)</strong> 추가, 해부·술기 <span class="sym-dn">▼</span> 자평 및 피드백 미제출. 별도 케이스의 L3를 기존 L4의 하락으로 해석하지 않음. Burr hole &amp; SDH removal L2(보조 — 07-29, 08-03 2건) · <strong>08-31 craniotomy &amp; SDH removal L4(최소 감독)</strong> — 09-07 뒤늦게 온 자기평가로 외상·L4 확정, 피드백 전항목 <span class="sym-up">▲</span>. 개두 외상 수술이 L4로 올라선 첫 기록 · 08-30 burr hole(자기평가 미제출로 분과·레벨 미상 — 외상 개연성)</li>
-<li>기본 술기: EVD — 07-08 bilateral L2(보조) → 08-21·08-23 단독 <strong>L5(독립 집도)</strong> ×2. 단 두 건 모두 수술 후 영상에서 catheter malposition(후방 trajectory·과도한 깊이) 확인 — trajectory 정확도가 과제 · <strong>Tracheostomy L5(독립 집도, 08-31)</strong> — thyroid 견인·exposure 확보를 스스로 <span class="sym-dn">▼</span>로 매김, 피드백 미제출(김준회)</li>
-<li>종양: 08-18 tumor removal 1건(부위·분과 미상, 자기평가 미제출로 레벨 미상) — 두개강 내 여부 미확인</li>
-<li>09-14 navigation-guided 수술 추정(시트 원문 mavigation). 실제 수술명·분과·EPA 미확인으로 술기군별 도달 수준에는 반영하지 않음</li>
+<li><strong>4년차 궤도 판단</strong>: 개두 외상 · EVD · Tracheostomy는 L4~L5로 올라섰고, 척추 · clipping은 L2 보조에 머문다. 8~9월 중재 · 혈관조영 7건과 9월 clip은 자기평가가 없어 레벨 추적이 끊겼다.</li>
+<li>09-14 navigation-guided 수술(추정, 시트 원문 mavigation)은 수술명 확인 전이라 술기군에 넣지 않았다.</li>
 </ul>
 <h3>경험 분포 (분과별 누적)</h3>
+<div class="tbl"><table><thead><tr>
+<th class="ac">뇌혈관</th>
+<th class="ac">척추</th>
+<th class="ac">외상</th>
+<th class="ac">소아</th>
+<th class="ac">기타</th>
+<th class="ac">종양</th>
+<th class="ac">미상</th>
+<th class="ac">합계</th>
+</tr></thead><tbody>
+<tr><td class="ac">15</td><td class="ac">6</td><td class="ac">4</td><td class="ac">2</td><td class="ac">4</td><td class="ac">0</td><td class="ac">4</td><td class="ac"><strong>35</strong></td></tr>
+</tbody></table></div>
 <ul>
-<li>뇌혈관 15 · 척추 6 · 외상 4 · 소아 2 · 기타(EVD 3 · Tracheostomy 1) 4 · 미상 4 · 종양 0 — 총 35건(7월 12 · 8월 16 · 9월 7, 피드백만 있는 기록 포함). 미상 4건은 08-11 VP shunt·08-18 tumor removal·08-30 burr hole·09-14 mavigation</li>
-<li>09-15 TFCA는 사용자 정정에 따라 뇌혈관 진단 혈관조영으로 집계한다. 09-14는 navigation-guided 수술 추정이며, 임종국 교수가 이현정에게 남긴 피드백 1건으로 잠정 집계한다. 정확한 수술 확인 후 매칭·중복 여부를 재검토한다</li>
-<li>08-31 craniotomy는 소급 자기평가로 외상·L4, Tracheostomy는 기타·L5가 확인된 상태. 자기평가 없는 13건의 EPA는 계속 미상이며, 피드백만으로 참여 수준을 추정하지 않음</li>
+<li>월별 7월 12 · 8월 16 · 9월 7. 뇌혈관 15건은 중재 · 혈관조영 11(coil 2 · CAS · WEB 2 · TFCA 6) · clipping 3 · cranioplasty 1로 시술에 치우쳐 있다.</li>
+<li>기타 4 = EVD 3 · Tracheostomy 1. 미상 4 = 08-11 VP shunt · 08-18 tumor removal · 08-30 burr hole · 09-14 navigation 추정 — 자기평가가 와야 분과 확정.</li>
+<li><strong>제출 공백</strong>: 자기평가 미제출 13건 · 피드백 미제출 6건. 9월 7건 중 양쪽 평가가 모두 있는 건은 없고, 주간보고는 07-24 이후 없다.</li>
 </ul>
 <h3>반복 성장 과제</h3>
 <ul>
-<li><strong>술 전 준비(영상 분석·예습) 루틴</strong> — 7월 소급 자기평가 7건과 08-04·08-06의 계획·사전 숙지·해부·술기 <span class="sym-dn">▼</span> 자평으로 인식은 완성, 08-30 burr hole &quot;surgical plan&quot;(임종국)으로 월말에 지도전문의 쪽에서도 재지적 — 케이스 전 실행 루틴이 과제</li>
-<li><strong>해부(anatomy) → 기구 조작·선택으로 초점이 좁혀진 시술 축</strong> — 07-29 WEB &quot;anatomy 미숙&quot; → 08-07 TFCA &quot;aortic arch anatomy 미흡&quot; → 08-14 &quot;TFCA 술기 미숙&quot; → 08-18 tumor removal &quot;surgical anatomy 미흡&quot; → 08-28 TFCA &quot;catherter 조작 미흡&quot; → 09-02 WEB &quot;aneurysm의 크기와 device 선택&quot; → 09-11 TFCA <strong>&quot;great vessel selection&quot;</strong>(모두 임종국). TFCA 6건에 각각 술기 관련 코멘트가 있으며, WEB은 2건이다. 09-15 microwire shaping에 이어 09-23 contrast injection volume이 추가됐으며, 이전 항목의 개선 여부는 별도 확인이 필요함</li>
-<li><strong>세밀 조작(suction·drain·drilling)과 준비·세팅</strong> — 08-06·08-20 suction·drain tagging(김준회), 08-31 craniotomy 전항목 <span class="sym-up">▲</span>에 &quot;drilling technique&quot;(임종국). 준비·세팅·개두 기본은 08-12 ULBD·08-20 TLIF·08-31에서 인정 신호였으나 09-08 aneurysm clip <strong>&quot;surgical drap&quot;</strong>(임종국)으로 세팅 단계가 다시 지적됨. 08-31 Tracheostomy 자평(exposure 확보 <span class="sym-dn">▼</span>)도 시야 만들기 축</li>
-<li><strong>09-14 mavigation의 trajectory 피드백</strong> — navigation-guided 수술로 추정되지만 대상 수술이 불명확하므로 기존 EVD 문제와 같은 케이스나 동일한 오류로 연결하지 않음</li>
-<li><strong>EVD trajectory</strong> — 08-21(후방 거치, &quot;tragectory 미흡&quot;)·08-23(과도한 깊이) L5 독립 시행 2건 연속 malposition. 자기성찰은 구체적, 다음 EVD에서 영상 검토→trajectory 계획→삽입 후 확인 루틴 검증 필요</li>
-<li><strong>수술·시술 순서(op sequence) 이해</strong> — 7월 최상위 과제, 8월 재지적 없음. 08-03 면담의 clipping <strong>발표</strong> 과제 이행 여부 확인 필요</li>
+<li><strong>술 전 준비 루틴</strong> — 7월 소급 자기평가 7건과 08-04 · 08-06에서 계획 · 사전 숙지 <span class="sym-dn">▼</span> 자평이 반복됐고, 08-30 burr hole &quot;surgical plan&quot;(임종국)으로 지도전문의 쪽에서도 재지적. 인식은 됐고 케이스 전 실행이 과제.</li>
+<li><strong>시술 축: 해부 → 기구 선택 · 조작</strong> — 07-29 WEB &quot;anatomy 미숙&quot; → 08-07 &quot;aortic arch anatomy&quot; → 08-14 &quot;술기 미숙&quot; → 08-28 &quot;catheter 조작&quot; → 09-02 &quot;device 선택&quot; → 09-11 &quot;great vessel selection&quot; → 09-15 &quot;microwire shaping&quot; → 09-23 &quot;contrast injection volume&quot;(모두 임종국). 지적이 매번 다음 단계로 옮겨 가지만, 이전 항목이 해결됐는지 확인하는 기록은 없다.</li>
+<li><strong>세밀 조작 · 세팅</strong> — suction · drain tagging(김준회 08-06 · 08-20), drilling technique(임종국 08-31), 09-08 clip &quot;surgical drap&quot;(임종국), 08-31 Tracheostomy exposure <span class="sym-dn">▼</span> 자평. 준비 · 개두 기본은 인정 신호(08-12 · 08-20 · 08-31 <span class="sym-up">▲</span>)가 있어 남은 과제는 세부 손기술.</li>
+<li><strong>EVD trajectory</strong> — L5 독립 시행 2건(08-21 · 08-23) 연속 malposition. 자기성찰은 구체적이며 다음 EVD에서 영상 검토 → trajectory 계획 → 삽입 후 확인 루틴 검증이 필요. 09-14 &quot;trajectory&quot; 피드백은 대상 수술 미확인이라 별도.</li>
+<li><strong>op sequence 이해 · clipping 발표 과제</strong> — 7월 최상위 과제였고 8~9월 재지적은 없다. 08-03 면담의 발표 과제 이행 여부 확인 필요.</li>
 </ul>
 </div>
 <div class="card">
@@ -213,15 +239,15 @@ li.li2 .li-body{display:block;margin-top:6px;color:var(--ink);font-size:14px;}
 <div class="ai">
 <h3>읽히는 패턴</h3>
 <ul>
-<li><strong>09-22 수술 자기평가로 9월 참여 수준 기록이 처음 추가됐다.</strong> Revision cranioplasty·EDH removal은 L3이며, 해부학적 구조 파악·술기 수행을 <span class="sym-dn">▼</span>로 평가했다. 지혈과 dural tack-up에 대한 성찰은 구체적이지만 지도전문의 피드백은 아직 없다.</li>
-<li><strong>TFCA 피드백은 기구 선택·조작에서 contrast injection volume까지 이어진다.</strong> 09-23 피드백은 전항목 보통이며, 이전 지적의 개선 여부까지 확인해 주는 기록은 아니다. 누적 자기평가 미제출 13건·피드백 미제출 6건으로, 9월 7건 중 양쪽 평가가 모두 있는 건은 없다.</li>
-<li><strong>09-22 치프 역할에 대한 면담기록이 추가됐다.</strong> 저년차 파견 전공의 지원과 의료업무에 관한 원칙을 지도한 내용이다. 구체적인 사건·행동·의도는 이 기록만으로 판단하지 않는다. 주간보고는 07-24 이후 없다.</li>
+<li><strong>9월 7건 중 양쪽 평가가 갖춰진 건이 없다.</strong> 6건은 피드백만(전항목 보통), 09-22 revision cranioplasty만 자기평가(L3, 해부 · 술기 <span class="sym-dn">▼</span>). 누적 자기평가 미제출 13건 · 피드백 미제출 6건이고 주간보고는 두 달째 없다.</li>
+<li><strong>TFCA · WEB 지적이 한 단계씩 앞으로 옮겨 간다.</strong> 8월 arch 해부 · catheter 조작에서 9월 great vessel selection → microwire shaping → contrast injection volume. 진행형 지적이라 개선 신호일 수 있으나, 자기평가가 없어 본인 인식은 확인되지 않는다.</li>
+<li><strong>역할이 두 방향으로 넓어졌다.</strong> 08-31 이후 L4~L5 케이스가 쌓였고 09-22 revision cranioplasty &amp; EDH removal은 L3. 같은 날 김준회 면담에서는 저년차 파견 전공의에 대한 치프 역할이 지도됐다.</li>
 </ul>
 <h3>제안</h3>
 <ul>
-<li><strong>09-22 수술에서 직접 수행한 단계와 어려움을 먼저 묻는다.</strong> “지혈·dural tack-up 중 직접 한 부분과 도움이 필요했던 부분은 무엇인가요?”를 확인하고 임종국 교수 피드백을 연결한다. 다른 수술의 L4·L5와 이번 L3를 단순한 등락으로 비교하지 않는다.</li>
-<li><strong>TFCA·WEB 피드백 후 바꾼 점을 한 사례로 복기한다.</strong> great vessel selection·microwire shaping·contrast injection volume과 device 선택에서 어떤 준비와 판단을 했는지 묻는다. EVD 자기성찰 이후 경험과 clipping 발표 과제 이행도 확인하고 다음 과제 하나를 정한다.</li>
-<li><strong>치프 역할을 실제 지원 행동으로 구체화한다.</strong> “저년차 파견 전공의가 어려움을 겪을 때 어떻게 돕고 있나요?”, “업무상 의견을 전달할 때 어려움은 무엇인가요?”를 묻고 역할·소통 방식을 합의한다. 자기평가 13건·피드백 6건 보완 일정과 09-14 수술명·09-15 시트 표기 차이도 확인한다. 새 목표는 합의 후 기록한다.</li>
+<li><strong>9월 유일한 자기평가(09-22)로 면담을 연다.</strong> &quot;지혈 · dural tack-up 중 직접 한 부분과 막힌 부분은?&quot;을 묻고, 임종국 교수 피드백을 받아 짝을 맞춘다.</li>
+<li><strong>TFCA 한 사례를 준비 → 선택 → 조작 순으로 복기한다.</strong> great vessel selection · microwire shaping · contrast volume 각각에서 무엇을 바꿨는지 본인 말로 설명하게 하고 다음 TFCA 목표를 하나로 정한다. EVD trajectory 루틴과 clipping 발표 이행도 같은 자리에서 확인.</li>
+<li><strong>치프 역할과 제출 공백을 합의로 마무리한다.</strong> &quot;파견 저년차가 막힐 때 어떻게 돕고 있나?&quot;를 듣고 지원 방식을 정한다. 자기평가 13건 · 피드백 6건 보완 일정, 09-14 수술명, 09-15 시트 표기(aneurysm → TFCA) 정정을 확인한다.</li>
 </ul>
 </div>
 <div class="ai-note">Claude가 raw 기록·면담 기록을 근거로 작성한 참고 의견입니다 · 갱신 2026-09-23. 판단은 지도전문의가 합니다.</div>

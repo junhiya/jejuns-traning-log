@@ -34,6 +34,10 @@ table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:14px;}
 th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;}
 th{background:var(--bg);color:var(--navy);font-weight:700;}
 td:first-child, th:first-child{text-align:left;}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0 6px;}
+.tbl table{margin:0;}
+@media (max-width:600px){.tbl table{font-size:13px;} .tbl th,.tbl td{padding:6px 8px;}}
+td.al,th.al{text-align:left;} td.ac,th.ac{text-align:center;white-space:nowrap;} td.ar,th.ar{text-align:right;}
 ul{margin:6px 0 6px 20px;}
 li{margin:4px 0;}
 /* 불릿을 동그라미(•) 대신 작은 둥근 사각형으로 — 제목의 세로 액센트 바와 같은 조형 언어로 통일.
